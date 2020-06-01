@@ -21,8 +21,8 @@
 title: Analyzing "I Doubt It"
 description: >- # this means to ignore newlines until "baseurl:"
   Analyzing the card game I Doubt It from the perspective of player's own knowledge, common knowledge, belief and Public Announcement Logic.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/LAMAS" # the subpath of your site, e.g. /blog
+url: "https://prajaktashouche.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 theme: jekyll-theme-cayman
