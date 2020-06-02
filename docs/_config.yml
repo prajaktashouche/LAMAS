@@ -32,6 +32,7 @@ plugins:
 include:
   - index.md
   - rules_restrictions.md
+  - implementation.md
    
 # Exclude from processing.
 # The following items will not be processed, by default.

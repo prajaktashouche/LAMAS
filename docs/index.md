@@ -6,5 +6,6 @@ The card game *I Doubt it*, also popularly known as "Bluff" is a mutliplayer gam
 ## Setup
 
 [Rules and restrictions](rules_restrictions.md)
+[Implementation](implementation.md)
 
 
