@@ -1,0 +1,16 @@
+pages:
+
+- title: Introduction
+  url: index.html
+
+- title: Theory
+  url: theory.html
+
+- title: Example
+  url: example.html
+
+- title: Simulation
+  url: simulation.html
+
+- title: Results
+  url: results.html
