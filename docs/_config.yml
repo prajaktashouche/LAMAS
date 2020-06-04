@@ -3,3 +3,9 @@ description: LAMAS Project 2020
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-cayman
+
+defaults:
+  - scope:
+      path: "assets/images"
+    values:
+      image: true
