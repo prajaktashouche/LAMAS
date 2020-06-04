@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+
+<link rel="stylesheet" href="{{ '/assets/css/simulation.css' }}">
+
+<div>
+  <h1>Simulation</h1>
+
+  <div class="flex-container">
+    <div class="sim">
+      {% include graph.html %}
+    </div>
+    <section class="player-container">
+
+      <div class="cards-container">
+        <div>Player: Alice</div>
+        <div class="image-container p1">
+          <img src="{{ '/assets/images/3H.png' }}" alt="3H" class="cards-img">
+          <img src="{{ '/assets/images/2H.png' }}" alt="2H" class="cards-img">
+        </div>
+      </div>
+
+      <div class="cards-container">
+        <div>Player: Bob</div>
+        <div class="image-container p2">
+          <img src="{{ '/assets/images/AS.png' }}" alt="AS" class="cards-img">
+          <img src="{{ '/assets/images/AH.png' }}" alt="AH" class="cards-img">
+        </div>
+      </div>
+
+      <div class="cards-container">
+        <div>Player: Charlie</div>
+        <div class="image-container p3">
+          <img src="{{ '/assets/images/2S.png' }}" alt="2S" class="cards-img">
+          <img src="{{ '/assets/images/3S.png' }}" alt="3S" class="cards-img">
+        </div>
+      </div>
+    </section>
+    <!-- <section class="controls-container">
+      <div class="button"><span>Click Me</span></div>
+    </section> -->
+
+  </div>
+
+</div>

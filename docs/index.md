@@ -2,6 +2,11 @@
 layout: default
 ---
 
+This project is done as part of the course Logical Aspects of Multi-Agent Systems at the University of Groningen. It is done in collaboration with the following students:
+
+Shaniya Hassan Ali, Prajakta Shouche, Andrei Miculita & Vinayak Prasad
+
+
 # Introduction
 
 The card game **I Doubt it**, also popularly known as “Bluff” is a multiplayer game. The goal of each player is to get rid of all of their cards. It is a game where the ability to deceive other players at the same time detect other players’ deception comes into play. Each player gets to place some face down, and make an announcement which need not be truthful. Decision needs to be made based on previous knowledge as well as the last player’s announcement to call out a bluff or not. The included dynamic of lying makes the game an interesting one to analyze from the perspective of player’s knowledge, common knowledge, belief and Public announcement logic.
