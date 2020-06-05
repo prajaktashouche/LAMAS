@@ -3,10 +3,10 @@ layout: default
 ---
 
 # Theory
-The game was built using the model of manipulative lying proposed by Wang et al.(2011), which is based on the logic of communication and change by Benthem et al. (2005).Communication between agents implies changes in the world and the knowledge of agents. The communication takes place as actions in an epistemic model, hence influencing knowledge and belief of the agents. The actions in our game are public annoucements made by the players.
+The game was built using the model of manipulative lying proposed by Wang et al.(2011), which is based on the logic of communication and change by Benthem et al. (2005). Communication between agents implies changes in the world and the knowledge of agents. The communication takes place as actions in an epistemic model, hence influencing knowledge and belief of the agents. The actions in our game are public announcements made by the players.
 
 ## Lying in public announcements
-The public annoucement in our game follow deception and manipulating the other agents into believing a lie. Generally, if an annoucement ![phi](https://latex.codecogs.com/svg.latex?%5Cphi) is made, then the belief of each agent is rightly updated to ![phi](https://latex.codecogs.com/svg.latex?%5Cphi), and similarly for ![negphi](https://latex.codecogs.com/svg.latex?%5Cneg%20%5Cphi). In manipulation however, the agent lies that and misleads the public to believe ![phi](https://latex.codecogs.com/svg.latex?%5Cphi). So, there are two possible annoucement actions:
+The public announcement in our game follow deception and manipulating the other agents into believing a lie. Generally, if an announcement ![phi](https://latex.codecogs.com/svg.latex?%5Cphi) is made, then the belief of each agent is rightly updated to ![phi](https://latex.codecogs.com/svg.latex?%5Cphi), and similarly for ![negphi](https://latex.codecogs.com/svg.latex?%5Cneg%20%5Cphi). In manipulation however, the agent lies that and misleads the public to believe ![phi](https://latex.codecogs.com/svg.latex?%5Cphi). So, there are two possible annoucement actions:
 * Announcing ![phi](https://latex.codecogs.com/svg.latex?%5Cphi) when it is true, hence all updates are true
 * Lying ![phi](https://latex.codecogs.com/svg.latex?%5Cphi) is true when it is false, hence manipulating the public's belief
 
