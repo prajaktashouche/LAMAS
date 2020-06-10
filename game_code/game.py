@@ -1,22 +1,25 @@
 from deck import Deck
 from player import Player
-from node import Node
+from world import World
 
 
 class Game:
 
     def __init__(self):
+
+        # build deck with explicit cards
         self.deck = Deck()
         self.deck.build_dev()
 
+        # we have 3 players initialized with player IDs
         self.players = [Player("Alice", 0), Player("Bob", 1), Player("Charlie", 2)]
 
+        # deal the cards explicitly to players
         self.deck.deal(self.players)
 
-        for p in self.players:
-            p.show_name()
-            p.show_hand()
-            p.generate_possible_worlds()
+        # build possible worlds at init
+        self.world = World()
+        self.world.assign_real_world(self.deck.dealt_cards)
 
     def player_announcement(self, player_id, card_val, action):
 
@@ -29,9 +32,6 @@ class Game:
         elif action == "TRUTH":
             pass
 
-    def show_graph(self):
-
-        node = Node(self.players)
-        node.generate()
-
+    def show_world(self):
+        self.world.show_kripke_model()
 

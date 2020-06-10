@@ -8,6 +8,7 @@ class Deck:
 
     def __init__(self):
         self.cards = []
+        self.dealt_cards = []
         self.build()
 
     def build(self):
@@ -52,3 +53,6 @@ class Deck:
 
             player = players[i % players_nb]
             player.draw(self)
+
+        for p in players:
+            self.dealt_cards.append(p.get_hand())

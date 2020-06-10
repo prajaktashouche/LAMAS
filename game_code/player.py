@@ -9,7 +9,7 @@ class Player:
     colors = ['red', 'blue', 'green']
     player_ids = [0, 1, 2]
 
-    def __init__(self, name, player_id):
+    def __init__(self, name=None, player_id=None):
         self.name = name
         self.player_id = player_id
         self.hand = []
@@ -30,8 +30,11 @@ class Player:
         ret = [card.card for card in self.hand]
         print("({}, {})".format(*ret))
 
-    def get_hand(self):
-        ret_obj = [card.card for card in self.hand]
+    def get_hand(self, tup=True):
+        if tup:
+            ret_obj = tuple(card.card for card in self.hand)
+        else:
+            ret_obj = [card.card for card in self.hand]
         return ret_obj
 
     def get_hand_str(self):
@@ -41,6 +44,22 @@ class Player:
     def get_color(self):
         return self.colors[self.player_id]
 
+    def reorder_paths(self, paths):
+        ret = []
+        if self.player_id == 0:
+            for path in paths:
+                ret.append([self.get_hand(), path[0], path[1]])
+
+        elif self.player_id == 1:
+            for path in paths:
+                ret.append([path[0], self.get_hand(), path[1]])
+
+        elif self.player_id == 2:
+            for path in paths:
+                ret.append([path[0], path[1], self.get_hand()])
+
+        return ret
+
     def get_all_paths(self):
         paths = []
 
@@ -49,7 +68,7 @@ class Player:
         card_list = deck.list()
 
         # remove own cards from card_list
-        for n in self.get_hand():
+        for n in self.get_hand(tup=False):
             card_list.remove(n)
 
         # combination of cards after removing own cards
@@ -68,20 +87,8 @@ class Player:
         return paths
 
     def generate_possible_worlds(self):
-        player_ids = [i for i in self.player_ids if i != self.player_id]
-
         paths = self.get_all_paths()
-
-        for path in paths:
-            deal1, deal2 = path
-
-            other_player_1 = Player("", player_ids[0])
-            other_player_1.set_hand(deal1)
-
-            other_player_2 = Player("", player_ids[1])
-            other_player_2.set_hand(deal2)
-
-            self.possible_worlds.append([other_player_1, other_player_2])
+        self.possible_worlds = self.reorder_paths(paths)
 
     def update_possible_worlds(self):
         pass
