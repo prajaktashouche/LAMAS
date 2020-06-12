@@ -90,7 +90,9 @@ class Player:
         paths = self.get_all_paths()
         self.possible_worlds = self.reorder_paths(paths)
 
-    def update_possible_worlds(self):
+    def update_possible_worlds(self, player_id, player_cards, card_announced, announcer):
+        print(self.possible_worlds)
+
         pass
 
 

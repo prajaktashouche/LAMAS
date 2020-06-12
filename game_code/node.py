@@ -90,7 +90,7 @@ class Node:
 
             # change color of real world
             if root_id == 0:
-                self.net.add_node(root_id, label="w{}".format(root_id), title=title, color=real_color, shape="ellipse")
+                self.net.add_node(root_id, label="w{}".format(root_id), title=title, color=root_color, shape="ellipse")
             else:
                 self.net.add_node(root_id, label="w{}".format(root_id), title=title, color=root_color, shape="ellipse")
 

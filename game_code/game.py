@@ -30,7 +30,10 @@ class Game:
         elif action == "LIE":
             pass
         elif action == "TRUTH":
-            pass
+            for id, p in enumerate(self.players):
+                if id != player_id:
+                    p.update_possible_worlds(id, self.deck.dealt_cards[id], card_val, current_player)
+
 
     def show_world(self):
         self.world.show_kripke_model()
