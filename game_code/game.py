@@ -31,8 +31,11 @@ class Game:
             pass
         elif action == "TRUTH":
             for id, p in enumerate(self.players):
-                if id != player_id:
-                    p.update_possible_worlds(id, self.deck.dealt_cards[id], card_val, current_player)
+                is_announcer = 0
+                if id == player_id:
+                    is_announcer = 1
+
+                p.update_possible_worlds(id, self.deck.dealt_cards[id], card_val, player_id, is_announcer, self.world)
 
 
     def show_world(self):

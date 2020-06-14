@@ -111,7 +111,7 @@ class Node:
         self.net.set_options(self.get_net_options())
 
         # display graph
-        self.net.show('graph.html')
+        self.net.show('announcement.html')
 
         # save graph
         # self.net.save_graph('graph.html')

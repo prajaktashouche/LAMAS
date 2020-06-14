@@ -65,6 +65,31 @@ class World:
                     i += 1
                 player_idx += 1
 
+    def update_worlds(self, new_worlds):
+        print(self.possible_worlds)
+
+
+    def update_relations(self, player):
+        remove = []
+        new_worlds = []
+        for key, val in self.relations.items():
+            if player.get_color() in val:
+                remove.append(key)
+
+        for k in remove:
+            self.relations.pop(k)
+
+        i = len(self.relations) + 1
+        for world_id, p in player.possible_worlds.items():
+            new_worlds.append(world_id)
+            for w, pos in player.possible_worlds.items():
+                to_node_id = self.get_node_key(pos)
+                # print(world_id, to_node_id)
+                self.relations[i] = [world_id, to_node_id, player.get_color()]
+                i += 1
+
+        # self.update_worlds(new_worlds)
+
     def assign_real_world(self, real_world):
         key_0 = 0
         value_0 = self.get_node_value(key_0)
