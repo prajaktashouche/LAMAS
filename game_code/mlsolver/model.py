@@ -4,7 +4,7 @@ Module contains data model for three wise men puzzle as Kripke strukture and age
 formulas
 """
 
-from mlsolver.kripke import KripkeStructure, World
+from game_code.mlsolver.kripke import KripkeStructure, World
 from mlsolver.formula import Atom, And, Not, Or, Box_a, Box_star
 
 

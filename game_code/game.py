@@ -2,7 +2,6 @@ from deck import Deck
 from player import Player
 from world import World
 
-
 class Game:
 
     def __init__(self):
@@ -37,7 +36,7 @@ class Game:
 
                 p.update_possible_worlds(id, self.deck.dealt_cards[id], card_val, player_id, is_announcer, self.world)
 
-
+            self.world.update_worlds()
     def show_world(self):
         self.world.show_kripke_model()
 
