@@ -1,5 +1,6 @@
 from mlsolver.kripke import KripkeStructure, World
 # from mlsolver.model import add_reflexive_edges, add_symmetric_edges
+from mlsolver.formula import Atom, And, Not, Or, Box_a, Box_star
 
 
 def kripke_model(game):
@@ -26,6 +27,12 @@ def kripke_model(game):
 
     # Make kripke model
     ks = KripkeStructure(worlds, relations)
+
+    # This doesn't work
+    # formula = str(2) + str(('1S', '2S'))
+    # g = Box_a('0', Not(Atom(formula)))
+    #
+    # model = ks.solve(g)
 
     print(relations)
 
