@@ -37,8 +37,6 @@ def kripke_model(game):
     print(relations)
 
 
-
-
     # deck = ['A', 'A', '2', '2', '3', '3']
 
     # # A trial for generating all possible worlds (can be made more efficient)

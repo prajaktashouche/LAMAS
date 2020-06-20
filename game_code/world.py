@@ -52,6 +52,8 @@ class World:
     def generate_relations(self):
         i = 0
 
+        self.relations.clear()
+
         for world_id in self.possible_worlds:
             player_idx = 0
             for player_hand in self.possible_worlds[world_id]:
@@ -61,42 +63,10 @@ class World:
 
                 for pos in player.possible_worlds:
                     to_node_id = self.get_node_key(pos)
-                    self.relations[i] = [world_id, to_node_id, player.get_color()]
-                    i += 1
+                    if to_node_id is not None:
+                        self.relations[i] = [world_id, to_node_id, player.get_color()]
+                        i += 1
                 player_idx += 1
-
-    def update_worlds(self):
-        remove = []
-        for world_id, p in self.possible_worlds.items():
-            flag = 0
-            for rel in self.relations.values():
-                if world_id in rel:
-                    flag = 1
-            if flag == 0:
-                remove.append(world_id)
-
-        for k in remove:
-            self.possible_worlds.pop(k)
-
-        print(self.possible_worlds)
-
-    def update_relations(self, player):
-        remove = []
-        for key, val in self.relations.items():
-            if player.get_color() in val:
-                remove.append(key)
-
-        for k in remove:
-            self.relations.pop(k)
-
-        i = len(self.relations) + 1
-        for world_id, p in player.possible_worlds.items():
-            for w, pos in player.possible_worlds.items():
-                to_node_id = self.get_node_key(pos)
-                # print(world_id, to_node_id)
-                self.relations[i] = [world_id, to_node_id, player.get_color()]
-                i += 1
-
 
     def assign_real_world(self, real_world):
         key_0 = 0
@@ -108,6 +78,62 @@ class World:
             self.possible_worlds[key_0] = real_world
             self.possible_worlds[key_1] = value_0
 
-    def show_kripke_model(self):
+    def show_kripke_model(self, graph_name):
         node = Node(nodes=self.possible_worlds, edges=self.relations)
-        node.show_kripke_model()
+        node.show_kripke_model(graph_name)
+
+    def check_statement(self, player_id, value):
+        # TODO: check if bluff or not, currently pass false
+        return False
+
+    def update_action_pass(self, player_id, value):
+        keys_to_remove = []
+
+        for key, hand in self.possible_worlds.items():
+            # for each world, check the player hand, if it matches remove from the world
+            # essentially pass is when there is no world where the player has that hand
+            # announcing you don't have the card also updates other players possible world
+            player_hand = hand[player_id]
+            if value in player_hand:
+                keys_to_remove.append(key)
+
+        for k in keys_to_remove:
+            print("#DEBUG# Keys removed: ", k)
+            self.possible_worlds.pop(k)
+
+    def update_action_place(self, player_id, value):
+        call_bluff = self.check_statement(player_id, value)
+
+        # player announced a false statement
+        if call_bluff:
+            pass
+
+        # player announced a true statement
+        else:
+            keys_to_remove = []
+
+            # update worlds
+            # worlds where the player has a different card as possible will be removed
+            for key, hand in self.possible_worlds.items():
+                player_hand = hand[player_id]
+                if value not in player_hand:
+                    keys_to_remove.append(key)
+
+            for k in keys_to_remove:
+                print("#DEBUG# Keys removed: ", k)
+                self.possible_worlds.pop(k)
+
+        return call_bluff
+
+    def update_worlds(self, player_id, value, action):
+        call_bluff = False
+
+        if action == "PASS":
+            self.update_action_pass(player_id, value)
+
+        elif action == "PLACE":
+            call_bluff = self.update_action_place(player_id, value)
+
+        self.generate_relations()
+
+        return call_bluff
