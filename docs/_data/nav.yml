@@ -6,9 +6,6 @@ pages:
 - title: Theory
   url: theory.html
 
-- title: Example
-  url: example.html
-
 - title: Simulation
   url: simulation.html
 
