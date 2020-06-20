@@ -4,16 +4,14 @@
 
 .sim {
     width: 100%;
-    border: 2px solid lightblue;
-    border-right: none;
-    border-radius: 10px 0 0 10px;
-    box-shadow: -7px 0 7px -7px black inset, -7px 0 7px -7px black inset;
+    border: 2px solid #dc002d60;
+    border-radius: 10px;
 }
 
 .player-container {
     display: flex;
     flex-direction: column;
-    /*padding-left: 10px;*/
+    margin-left: 10px;
     width: fit-content;
     float: right;
 }
@@ -23,20 +21,21 @@
     flex-direction: column;
     flex: 1;
     padding: 20px;
+    border-radius: 10px;
 }
 
 .p1 {
-    border-radius: 0 10px 0 0;
     background-color: darkred;
+    margin-bottom: 5px;
 }
 
 .p2 {
     background-color: darkblue;
+    margin-bottom: 5px;
 }
 
 .p3 {
     background-color: darkgreen;
-    border-radius: 0 0 10px 0;
 }
 
 .player-name {
