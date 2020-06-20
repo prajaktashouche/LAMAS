@@ -6,54 +6,48 @@ layout: default
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/simulation.css">
 
 <div>
-  <h1>Simulation</h1>
+    <h1>Simulation</h1>
 
-  <div class="flex-container">
-    <div class="sim">
-      {% include graph.html %}
+    <div class="flex-container">
+        <div class="sim">
+            {% include graph.html %}
+        </div>
+        <section class="player-container">
+
+            <div class="cards-container p1">
+                <div class="player-name">Alice</div>
+                <div class="image-container">
+                    <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">
+                    <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">
+                </div>
+            </div>
+
+            <div class="cards-container p2">
+                <div class="player-name">Bob</div>
+                <div class="image-container">
+                    <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">
+                    <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">
+                </div>
+            </div>
+
+            <div class="cards-container p3">
+                <div class="player-name">Charlie</div>
+                <div class="image-container">
+                    <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">
+                    <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">
+                </div>
+            </div>
+        </section>
     </div>
-    <div class="button-container" style="border-style:none;">
-        <button type="button" class="reset" style="background-color:#EAFAF1;float: right;" onclick="drawGraph()"> Reset</button>
-    </div>
-    <section class="player-container">
-
-      <div class="cards-container">
-        <div style="text-align: center; border-style:none;">Player: Alice</div>
-        <div class="image-container p1">
-          <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">
-          <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">
-        </div>
-      </div>
-
-      <div class="cards-container">
-        <div style="text-align: center; border:none;">Player: Bob</div>
-        <div class="image-container p2">
-          <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">
-          <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">
-        </div>
-      </div>
-
-      <div class="cards-container">
-        <div style="text-align: center; border:none;">Player: Charlie</div>
-        <div class="image-container p3">
-          <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">
-          <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">
-        </div>
-      </div>
-    </section>
-  </div>
 
 </div>
 
-<div style="padding-top:150px;padding-bottom:10px>
-    <h2>Action
-    </h2>
-
+<div>
     <section class="controls-container">
-      <div id="announcement" style="center; border:none;">Initial Kripke model</div>
-
-      <div class="button-container">
-        <button type="button" class="next-action" style="background-color:#EAFAF1;" onclick="announcementGraph();changeText('Bob places down an Ace and truthfully announces Ace')"> Next Action</button>
-      </div>
+        <div>
+            <button onclick="goToNextStage(true)">Next Action</button>
+            <button onclick="drawGraph()">Reset</button>
+        </div>
+        <div id="announcement"></div>
     </section>
 </div>

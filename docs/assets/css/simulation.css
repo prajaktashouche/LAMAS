@@ -1,75 +1,92 @@
-.flex-container{
-  display: flex;
+.flex-container {
+    display: flex;
 }
 
 .sim {
-  width: 600px;
-  height: 400px;
-  border: 1px solid lightgray;
+    width: 80%;
+    border: 2px solid lightblue;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -7px 0 7px -7px black inset, -7px 0 7px -7px black inset;
 }
 
 .player-container {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid lightgray;
-  width: 100px;
+    display: flex;
+    flex-direction: column;
+    /*padding-left: 10px;*/
+    width: fit-content;
+    float: right;
 }
 
 .cards-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  border: 1px solid lightgray;
-  width: 200px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px;
 }
 
 .p1 {
-  background-color: red;
+    border-radius: 0 10px 0 0;
+    background-color: darkred;
 }
 
 .p2 {
-  background-color: blue;
+    background-color: darkblue;
 }
 
 .p3 {
-  background-color: green;
+    background-color: darkgreen;
+    border-radius: 0 0 10px 0;
+}
+
+.player-name {
+    text-align: center;
+    border-style: none;
+    color: white;
+    padding: 5px;
 }
 
 .image-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: auto;
-  flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
+    flex: 1;
 }
 
 .cards-img {
-  margin: 5px;
-  width: 50px;
-  height: 80px;
-  align-self: flex-start;
+    padding: 2px;
+    width: 50px;
+    height: 80px;
+    align-self: flex-start;
 }
 
 .controls-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  width: 100px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    padding: 10px;
 }
 
-.button {
-  background: #f3f0f1;
-  position: relative;
-  background: #f3f0f1;
-  margin-bottom: 25px;
-  border-radius: 32px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.1s ease-in-out;
-  span {
-      line-height: 100px;
-      font-family: "Montserrat", sans-serif;
-      font-size: 32px;
-      font-weight: semibold;
-    }
+/* None of this was working for me (Firefox/Chromium on Linux), I think the default system widgets are fine
+/*.button {*/
+/*    background: #f3f0f1;*/
+/*    position: relative;*/
+/*    border-radius: 32px;*/
+/*    text-align: center;*/
+/*    cursor: pointer;*/
+/*    transition: all 0.1s ease-in-out;*/
+/*}*/
+
+/*.button span {*/
+/*    line-height: 100px;*/
+/*    font-family: "Montserrat", sans-serif;*/
+/*    font-size: 32px;*/
+/*    font-weight: normal;*/
+/*}*/
+
+#announcement {
+    border: none;
+    width: 100%;
 }
