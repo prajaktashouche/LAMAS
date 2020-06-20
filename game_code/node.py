@@ -68,8 +68,8 @@ class Node:
 
     def add_net_nodes(self):
         text = '''<div>(
-                <span style="color:{};">{}</span><span style="color:{};">&{};</span>
-                <span style="color:{};">{}</span><span style="color:{};">&{};</span>
+                <span style="color:{};">{}&{};</span>
+                <span style="color:{};">{}&{};</span>
                 )</div>'''
 
         suit_dict = {'H': 'hearts', 'S': 'spades'}
@@ -85,21 +85,23 @@ class Node:
             title = ""
             for player in self.worlds[root_id]:
                 c1, c2 = list(player)
-                title += text.format(color_dict[c1[1]], c1[0], color_dict[c1[1]], suit_dict[c1[1]], color_dict[c2[1]],
-                                     c2[0], color_dict[c2[1]], suit_dict[c2[1]])
+                title += text.format(color_dict[c1[1]], c1[0], suit_dict[c1[1]],
+                                     color_dict[c2[1]], c2[0], suit_dict[c2[1]])
 
             # change color of real world
             if root_id == 0:
-                self.net.add_node(root_id, label="w{}".format(root_id), title=title, color=root_color, shape="ellipse")
+                self.net.add_node(root_id, label="w{}".format(
+                    root_id), title=title, color=real_color, shape="ellipse")
             else:
-                self.net.add_node(root_id, label="w{}".format(root_id), title=title, color=root_color, shape="ellipse")
+                self.net.add_node(root_id, label="w{}".format(
+                    root_id), title=title, color=root_color, shape="ellipse")
 
     def add_net_edges(self):
 
         for e in self.edges:
             self.net.add_edge(e.from_node_id, e.to_node_id, color=e.color)
 
-    def show_kripke_model(self):
+    def show_kripke_model(self, graph_name):
 
         # Add nodes, worlds
         self.add_net_nodes()
@@ -111,7 +113,7 @@ class Node:
         self.net.set_options(self.get_net_options())
 
         # display graph
-        self.net.show('announcement.html')
+        self.net.show("{}.html".format(graph_name))
 
         # save graph
         # self.net.save_graph('graph.html')

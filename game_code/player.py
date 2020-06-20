@@ -27,8 +27,8 @@ class Player:
         print(self.name)
 
     def show_hand(self):
-        ret = [card.card for card in self.hand]
-        print("({}, {})".format(*ret))
+        ret = [cObj.card for cObj in self.hand]
+        print("({})".format(",".join(ret)))
 
     def get_hand(self, tup=True):
         if tup:
@@ -90,21 +90,15 @@ class Player:
         paths = self.get_all_paths()
         self.possible_worlds = self.reorder_paths(paths)
 
-    def update_possible_worlds(self, player_id, player_cards, card_announced, announcer, is_announcer, world):
-        print('Player ' + str(player_id))
-        self.possible_worlds = {}
+    def update_hand(self, value):
+        i = 0
+        idx_to_remove = -1
+        for cObj in self.hand:
+            if cObj.card == value:
+                idx_to_remove = i
+            i += 1
 
-        # For all worlds
-        for number, w in world.possible_worlds.items():
-            # If the player has the same cards as in the TRUE/REAL world
-            if set(w[player_id]) == set(player_cards):
-                if not is_announcer:
-                    # And if announcer has the announced card in that world, then it is a possible world for this player
-                    if card_announced[0] + 'H' in w[announcer] or card_announced[0] + 'S' in w[announcer]:
-                        self.possible_worlds[number] = w
-                        print(w)
-                else:
-                    # For announcer, the worlds remain the same
-                    self.possible_worlds[number] = w
+        if idx_to_remove > -1:
+            self.hand.pop(idx_to_remove)
 
-        world.update_relations(self)
+
