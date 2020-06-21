@@ -9,7 +9,7 @@ Shaniya Hassan Ali, Prajakta Shouche, Andrei Miculita & Vinayak Prasad
 
 # Introduction
 
-The card game **I Doubt it**, also popularly known as “Bluff” is a multiplayer game. The goal of each player is to get rid of all of their cards. It is a game where the ability to deceive other players at the same time detect other players’ deception comes into play. Each player gets to place some face down, and make an announcement which need not be truthful. Decision needs to be made based on previous knowledge as well as the last player’s announcement to call out a bluff or not. The included dynamic of lying makes the game an interesting one to analyze from the perspective of player’s knowledge, common knowledge, belief and Public announcement logic.
+The card game **I Doubt it**, also popularly known as “Bluff” is a multiplayer game. The goal of each player is to get rid of all of their cards. It is a game where the ability to deceive other players at the same time detect other players’ deception comes into play. Each player gets to place some cards face down, and make an announcement which need not be truthful. Decision needs to be made based on previous knowledge as well as the last player’s announcement to call out a bluff or not. The included dynamic of lying makes the game an interesting one to analyze from the perspective of player’s knowledge, common knowledge, belief and Public announcement logic.
 
 # Rules
  > The goal is to be the first player to get rid of all their cards. When a player puts their last card on the table and either is not doubted or, upon being doubted, is shown to have announced correctly, they win the game
