@@ -1,0 +1,77 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "MediumSlateBlue", "id": 2, "label": "w2", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 3, "label": "w3", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 4, "label": "w4", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 13, "label": "w13", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 15, "label": "w15", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 17, "label": "w17", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 18, "label": "w18", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 21, "label": "w21", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 22, "label": "w22", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 25, "label": "w25", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 27, "label": "w27", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e"}, {"color": "MediumSlateBlue", "id": 29, "label": "w29", "shape": "ellipse", "title": "\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e1\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:black;\"\u003e2\u0026spades;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:red;\"\u003e2\u0026hearts;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e1\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e\u003cdiv\u003e(\n                \u003cspan style=\"color:black;\"\u003e3\u0026spades;\u003c/span\u003e\n                \u003cspan style=\"color:red;\"\u003e3\u0026hearts;\u003c/span\u003e\n                )\u003c/div\u003e"}]);
+        edges = new vis.DataSet([{"color": "red", "from": 2, "to": 3}, {"color": "red", "from": 2, "to": 4}, {"color": "red", "from": 2, "to": 2}, {"color": "blue", "from": 2, "to": 13}, {"color": "blue", "from": 2, "to": 25}, {"color": "green", "from": 2, "to": 18}, {"color": "red", "from": 3, "to": 3}, {"color": "red", "from": 3, "to": 4}, {"color": "blue", "from": 3, "to": 29}, {"color": "blue", "from": 3, "to": 21}, {"color": "green", "from": 3, "to": 15}, {"color": "red", "from": 4, "to": 4}, {"color": "blue", "from": 4, "to": 17}, {"color": "blue", "from": 4, "to": 22}, {"color": "green", "from": 4, "to": 27}, {"color": "red", "from": 13, "to": 17}, {"color": "red", "from": 13, "to": 15}, {"color": "red", "from": 13, "to": 13}, {"color": "blue", "from": 13, "to": 25}, {"color": "green", "from": 13, "to": 21}, {"color": "red", "from": 15, "to": 17}, {"color": "red", "from": 15, "to": 15}, {"color": "blue", "from": 15, "to": 27}, {"color": "blue", "from": 15, "to": 18}, {"color": "red", "from": 17, "to": 17}, {"color": "blue", "from": 17, "to": 22}, {"color": "green", "from": 17, "to": 29}, {"color": "red", "from": 18, "to": 21}, {"color": "red", "from": 18, "to": 22}, {"color": "red", "from": 18, "to": 18}, {"color": "blue", "from": 18, "to": 27}, {"color": "red", "from": 21, "to": 21}, {"color": "red", "from": 21, "to": 22}, {"color": "blue", "from": 21, "to": 29}, {"color": "red", "from": 22, "to": 22}, {"color": "green", "from": 22, "to": 25}, {"color": "red", "from": 25, "to": 29}, {"color": "red", "from": 25, "to": 27}, {"color": "red", "from": 25, "to": 25}, {"color": "red", "from": 27, "to": 29}, {"color": "red", "from": 27, "to": 27}, {"color": "red", "from": 29, "to": 29}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {"configure": {"enabled": false}, "nodes": {"font": {"size": 18}}, "edges": {"arrows": {"to": {"enabled": true, "scaleFactor": 0.3}}, "color": {"inherit": true}, "smooth": {"enabled": false, "type": "continuous"}}, "interaction": {"dragNodes": true, "hideEdgesOnDrag": false, "hideNodesOnDrag": false}, "physics": {"hierarchicalRepulsion": {"centralGravity": 0}, "minVelocity": 0.75, "solver": "hierarchicalRepulsion"}};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

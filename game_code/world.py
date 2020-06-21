@@ -84,6 +84,18 @@ class World:
 
     def check_statement(self, player_id, value):
         # TODO: check if bluff or not, currently pass false
+        player = Player(name=None, player_id=player_id)
+        flag = 0
+        for key, h in self.possible_worlds.items():
+            for rel_id, rel in self.relations.items():
+                if key == rel[0] and player.get_color() != rel[2]:
+                    for hand in self.possible_worlds[rel[1]]:
+                        player_hand = hand[player_id]
+
+                        if value in player_hand:
+                            flag = 1
+        if not flag:
+            return True
         return False
 
     def update_action_pass(self, player_id, value):
@@ -106,6 +118,7 @@ class World:
 
         # player announced a false statement
         if call_bluff:
+            print(str(player_id) + ' Calling bluff')
             pass
 
         # player announced a true statement
