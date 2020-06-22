@@ -86,14 +86,15 @@ class World:
         # TODO: check if bluff or not, currently pass false
         player = Player(name=None, player_id=player_id)
         flag = 0
+
         for key, h in self.possible_worlds.items():
             for rel_id, rel in self.relations.items():
                 if key == rel[0] and player.get_color() != rel[2]:
-                    for hand in self.possible_worlds[rel[1]]:
-                        player_hand = hand[player_id]
-
-                        if value in player_hand:
-                            flag = 1
+                    hand = self.possible_worlds[rel[1]]
+                    player_hand = hand[player_id]
+                    if value in player_hand:
+                        flag = 1
+                        break
         if not flag:
             return True
         return False
@@ -113,12 +114,13 @@ class World:
             print("#DEBUG# Keys removed: ", k)
             self.possible_worlds.pop(k)
 
-    def update_action_place(self, player_id, value):
+    def update_action_place(self, player_id, value, truth):
         call_bluff = self.check_statement(player_id, value)
 
-        # player announced a false statement
-        if call_bluff:
-            print(str(player_id) + ' Calling bluff')
+        # player announced a false statement and no bluff was called
+        if not truth and not call_bluff:
+            # Update worlds for other players normally
+            # for the lying player, the worlds
             pass
 
         # player announced a true statement
@@ -138,14 +140,14 @@ class World:
 
         return call_bluff
 
-    def update_worlds(self, player_id, value, action):
+    def update_worlds(self, player_id, value, action, truth):
         call_bluff = False
 
         if action == "PASS":
             self.update_action_pass(player_id, value)
 
         elif action == "PLACE":
-            call_bluff = self.update_action_place(player_id, value)
+            call_bluff = self.update_action_place(player_id, value, truth)
 
         self.generate_relations()
 

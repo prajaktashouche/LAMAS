@@ -22,7 +22,7 @@ class Game:
         self.world.assign_real_world(self.deck.dealt_cards)
 
     def player_announcement(self, player_id, card_val, action, truth):
-        call_bluff = self.world.update_worlds(player_id, card_val, action)
+        call_bluff = self.world.update_worlds(player_id, card_val, action, truth)
 
         if action == "PLACE":
             # TODO: action to do if its a bluff
