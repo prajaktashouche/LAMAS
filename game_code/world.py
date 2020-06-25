@@ -1,6 +1,6 @@
 from itertools import combinations, permutations
 from deck import Deck
-from player import Player
+from player import *
 from node import Node
 
 
@@ -84,19 +84,33 @@ class World:
 
     def check_statement(self, player_id, value):
         # TODO: check if bluff or not, currently pass false
-        player = Player(name=None, player_id=player_id)
-        flag = 0
 
-        for key, h in self.possible_worlds.items():
-            for rel_id, rel in self.relations.items():
-                if key == rel[0] and player.get_color() != rel[2]:
+        # Flag indicating the presence of card in the possible worlds for each player
+        flag = [0, 0, 0]
+        flag[player_id] = 1
+
+        # For each possible world
+        for key in self.possible_worlds.keys():
+            # Get all relations from the world, which are not for the current player
+            for rel in self.relations.values():
+                if key == rel[0] and player_color[player_id] != rel[2]:
                     hand = self.possible_worlds[rel[1]]
                     player_hand = hand[player_id]
+
+                    # If the card value is possible in at least one world for the other players
+                    # Flag is set for each player, so that we can also check who calls bluff
                     if value in player_hand:
-                        flag = 1
-                        break
-        if not flag:
+                        other_player = [k for (k, v) in player_color.items() if v == rel[2]]
+                        flag[other_player[0]] = 1
+
+                    # stop if both players have flag 1: which means the card is possible for both
+                    if set(flag) == {1}:
+                        return False
+
+        # For at least one player, no possible worlds contains the card, so call bluff
+        if 0 in flag:
             return True
+
         return False
 
     def update_action_pass(self, player_id, value):

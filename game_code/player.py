@@ -3,6 +3,7 @@ from itertools import permutations
 from deck import Deck
 from card import Card
 
+player_color = {0: 'red', 1: 'blue', 2: 'green'}
 
 class Player:
     cardsList = [1, 2, 3, 4, 5, 6]
