@@ -18,8 +18,7 @@ class Game:
         self.deck.deal(self.players)
 
         # build possible worlds at init
-        self.world = World()
-        self.world.assign_real_world(self.deck.dealt_cards)
+        self.world = World(self.deck.dealt_cards)
 
     def player_announcement(self, player_id, card_val, action, truth):
         call_bluff = self.world.update_worlds(player_id, card_val, action, truth)

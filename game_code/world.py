@@ -6,11 +6,12 @@ from node import Node
 
 class World:
 
-    def __init__(self):
+    def __init__(self, real_world):
         self.possible_worlds = {}
         self.relations = {}
 
         self.generate_worlds()
+        self.world.assign_real_world(real_world)
         self.generate_relations()
 
     def get_node_key(self, value):
