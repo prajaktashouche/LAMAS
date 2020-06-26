@@ -21,21 +21,42 @@ class Game:
         self.world = World(self.deck.dealt_cards)
 
     def player_announcement(self, player_id, card_val, action, truth):
-        call_bluff = self.world.update_worlds(player_id, card_val, action, truth)
+
+        call_bluff, bluff_player_id = self.world.update_worlds(player_id, card_val, action, truth)
 
         if action == "PLACE":
-            # TODO: action to do if its a bluff
-            if call_bluff:
-                pass
 
-            if not truth:
-                # If the player is lying then remove one of the cards from their hand
-                card = self.players[player_id].get_hand()[0]
-                self.players[player_id].update_hand(card)
+            # player announced true statement
+            if truth:
 
-            # update player hand to remove the placed cards
+                # bluff is called (not expected)
+                # other player who called bluff loses
+                if call_bluff:
+                    self.players[bluff_player_id].lose_hand()
+                    print("Player:{} LOST!".format(self.players[bluff_player_id].name))
+
+                # no bluff is called (expected)
+                # player hand: remove announced card
+                else:
+                    self.players[player_id].update_hand(card_val)
+
+            # player announced false statement
             else:
-                self.players[player_id].update_hand(card_val)
+
+                # bluff is called (expected)
+                # player loses
+                if call_bluff:
+                    self.players[player_id].lose_hand()
+                    print("Player:{} LOST!".format(self.players[player_id].name))
+
+                # no bluff is called (not expected)
+                # player hand: remove any card
+                else:
+                    card = self.players[player_id].get_hand()[0]
+                    self.players[player_id].update_hand(card)
+
+        elif action == "PASS":
+            pass    # do nothing
 
     def show_player_hands(self):
         for p in self.players:

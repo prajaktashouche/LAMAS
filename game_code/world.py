@@ -1,6 +1,9 @@
-from itertools import combinations, permutations
+from operator import itemgetter
+from itertools import combinations, permutations, groupby
+import random
+
 from deck import Deck
-from player import *
+from player import Player
 from node import Node
 
 
@@ -11,7 +14,7 @@ class World:
         self.relations = {}
 
         self.generate_worlds()
-        self.world.assign_real_world(real_world)
+        self.assign_real_world(real_world)
         self.generate_relations()
 
     def get_node_key(self, value):
@@ -65,7 +68,7 @@ class World:
                 for pos in player.possible_worlds:
                     to_node_id = self.get_node_key(pos)
                     if to_node_id is not None:
-                        self.relations[i] = [world_id, to_node_id, player.get_color()]
+                        self.relations[i] = [world_id, to_node_id, player.get_color(), player_idx]
                         i += 1
                 player_idx += 1
 
@@ -84,35 +87,35 @@ class World:
         node.show_kripke_model(graph_name)
 
     def check_statement(self, player_id, value):
-        # TODO: check if bluff or not, currently pass false
+        call_bluff = False
+        bluff_player_id = -1
 
-        # Flag indicating the presence of card in the possible worlds for each player
-        flag = [0, 0, 0]
-        flag[player_id] = 1
+        # get all to_nodes from real_world of other players
+        # v 0: from_node, 1: to_node, 2: player_color, 3: player_id
+        relations = [[v[3], v[1]] for k, v in self.relations.items() if v[0] == 0 and v[3] != player_id]
+        relations.sort(key=itemgetter(0))
 
-        # For each possible world
-        for key in self.possible_worlds.keys():
-            # Get all relations from the world, which are not for the current player
-            for rel in self.relations.values():
-                if key == rel[0] and player_color[player_id] != rel[2]:
-                    hand = self.possible_worlds[rel[1]]
-                    player_hand = hand[player_id]
+        checklist = {}
 
-                    # If the card value is possible in at least one world for the other players
-                    # Flag is set for each player, so that we can also check who calls bluff
-                    if value in player_hand:
-                        other_player = [k for (k, v) in player_color.items() if v == rel[2]]
-                        flag[other_player[0]] = 1
+        # group by player_id and loop thru each to_node
+        for player_idx, g in groupby(relations, lambda x: x[0]):
+            for _, to_node_key in list(g):
 
-                    # stop if both players have flag 1: which means the card is possible for both
-                    if set(flag) == {1}:
-                        return False
+                hand = self.get_node_value(to_node_key)
+                player_hand = hand[player_id]
 
-        # For at least one player, no possible worlds contains the card, so call bluff
-        if 0 in flag:
-            return True
+                if player_idx in checklist:
+                    checklist[player_idx].append(1 if value in player_hand else 0)
+                else:
+                    checklist[player_idx] = [1 if value in player_hand else 0]
 
-        return False
+        for player_idx, val in checklist.items():
+            if 1 not in val:
+                bluff_player_id = player_idx
+                call_bluff = True
+                break
+
+        return call_bluff, bluff_player_id
 
     def update_action_pass(self, player_id, value):
         keys_to_remove = []
@@ -126,44 +129,67 @@ class World:
                 keys_to_remove.append(key)
 
         for k in keys_to_remove:
-            print("#DEBUG# Keys removed: ", k)
             self.possible_worlds.pop(k)
 
     def update_action_place(self, player_id, value, truth):
-        call_bluff = self.check_statement(player_id, value)
 
-        # player announced a false statement and no bluff was called
-        if not truth and not call_bluff:
-            # Update worlds for other players normally
-            # for the lying player, the worlds
-            pass
+        call_bluff, bluff_player_id = self.check_statement(player_id, value)
 
-        # player announced a true statement
+        # THINK: how to simulate player announces false statement and bluff is not called?
+        if call_bluff:
+            call_bluff = random.getrandbits(1)
+
+        # player announced true statement
+        if truth:
+
+            # bluff is called (not expected)
+            # other player who called bluff loses
+            # TODO: do nothing?
+            if call_bluff:
+                pass
+
+            # no bluff is called (expected)
+            # player: no update on possible worlds
+            # other players: remove possible worlds where announced card does not exist
+            else:
+                keys_to_remove = []
+
+                for key, hand in self.possible_worlds.items():
+                    player_hand = hand[player_id]
+                    if value not in player_hand:
+                        keys_to_remove.append(key)
+
+                for k in keys_to_remove:
+                    self.possible_worlds.pop(k)
+
+        # player announced false statement
         else:
-            keys_to_remove = []
 
-            # update worlds
-            # worlds where the player has a different card as possible will be removed
-            for key, hand in self.possible_worlds.items():
-                player_hand = hand[player_id]
-                if value not in player_hand:
-                    keys_to_remove.append(key)
+            # bluff is called (expected)
+            # player loses
+            # TODO:
+            if call_bluff:
+                pass    # nothing to do here?
 
-            for k in keys_to_remove:
-                print("#DEBUG# Keys removed: ", k)
-                self.possible_worlds.pop(k)
+            # no bluff is called (not expected)
+            # player hand: no update on possible worlds
+            # other players: update possible worlds with wrongly announced card
+            # TODO:
+            else:
+                pass
 
-        return call_bluff
+        return call_bluff, bluff_player_id
 
     def update_worlds(self, player_id, value, action, truth):
         call_bluff = False
+        bluff_player_id = -1
 
         if action == "PASS":
             self.update_action_pass(player_id, value)
 
         elif action == "PLACE":
-            call_bluff = self.update_action_place(player_id, value, truth)
+            call_bluff, bluff_player_id = self.update_action_place(player_id, value, truth)
 
         self.generate_relations()
 
-        return call_bluff
+        return call_bluff, bluff_player_id

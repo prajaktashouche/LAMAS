@@ -4,7 +4,7 @@ from game import Game
 def main():
     print('Main')
     game = Game()
-    game.show_world("main")
+    # game.show_world("main")
 
     # Player has to place cards in order of 1H, 2H, 3H, 1S, 2S, 3S
 
@@ -18,7 +18,6 @@ def main():
     print("---PLAYER ACTION---")
     game.player_announcement(1, '2H', 'PLACE', False)
     game.show_player_hands()
-    game.show_world("turn4")
 
     # # Charlie lies and places
     # print("---PLAYER ACTION---")

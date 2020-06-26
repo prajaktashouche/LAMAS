@@ -3,7 +3,6 @@ from itertools import permutations
 from deck import Deck
 from card import Card
 
-player_color = {0: 'red', 1: 'blue', 2: 'green'}
 
 class Player:
     cardsList = [1, 2, 3, 4, 5, 6]
@@ -101,5 +100,8 @@ class Player:
 
         if idx_to_remove > -1:
             self.hand.pop(idx_to_remove)
+
+    def lose_hand(self):
+        self.hand.clear()
 
 

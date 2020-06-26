@@ -63,7 +63,7 @@ class Node:
 
     def get_edges(self, edges):
         for e in edges:
-            f, t, c = edges[e]
+            f, t, c, _ = edges[e]
             self.edges.append(Edges(f, t, c))
 
     def add_net_nodes(self):
