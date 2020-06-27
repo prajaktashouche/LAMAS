@@ -68,8 +68,9 @@ class World:
                 for pos in player.possible_worlds:
                     to_node_id = self.get_node_key(pos)
                     if to_node_id is not None:
-                        self.relations[i] = [world_id, to_node_id, player.get_color(), player_idx]
-                        i += 1
+                        if world_id != to_node_id:
+                            self.relations[i] = [world_id, to_node_id, player.get_color(), player_idx]
+                            i += 1
                 player_idx += 1
 
     def assign_real_world(self, real_world):
@@ -85,6 +86,20 @@ class World:
     def show_kripke_model(self, graph_name):
         node = Node(nodes=self.possible_worlds, edges=self.relations)
         node.show_kripke_model(graph_name)
+
+    def remove_possible_worlds(self, player_id, value):
+        keys_to_remove = []
+
+        for key, hand in self.possible_worlds.items():
+            player_hand = [x[0] for x in hand[player_id]]
+            if value not in player_hand:
+                keys_to_remove.append(key)
+
+        if 0 in keys_to_remove:
+            keys_to_remove.remove(0)
+
+        for k in keys_to_remove:
+            self.possible_worlds.pop(k)
 
     def check_statement(self, player_id, value):
         call_bluff = False
@@ -102,7 +117,7 @@ class World:
             for _, to_node_key in list(g):
 
                 hand = self.get_node_value(to_node_key)
-                player_hand = hand[player_id]
+                player_hand = [x[0] for x in hand[player_id]]
 
                 if player_idx in checklist:
                     checklist[player_idx].append(1 if value in player_hand else 0)
@@ -124,9 +139,12 @@ class World:
             # for each world, check the player hand, if it matches remove from the world
             # essentially pass is when there is no world where the player has that hand
             # announcing you don't have the card also updates other players possible world
-            player_hand = hand[player_id]
+            player_hand = [x[0] for x in hand[player_id]]
             if value in player_hand:
                 keys_to_remove.append(key)
+
+        if 0 in keys_to_remove:
+            keys_to_remove.remove(0)
 
         for k in keys_to_remove:
             self.possible_worlds.pop(k)
@@ -152,15 +170,7 @@ class World:
             # player: no update on possible worlds
             # other players: remove possible worlds where announced card does not exist
             else:
-                keys_to_remove = []
-
-                for key, hand in self.possible_worlds.items():
-                    player_hand = hand[player_id]
-                    if value not in player_hand:
-                        keys_to_remove.append(key)
-
-                for k in keys_to_remove:
-                    self.possible_worlds.pop(k)
+                self.remove_possible_worlds(player_id, value)
 
         # player announced false statement
         else:
@@ -174,9 +184,8 @@ class World:
             # no bluff is called (not expected)
             # player hand: no update on possible worlds
             # other players: update possible worlds with wrongly announced card
-            # TODO:
             else:
-                pass
+                self.remove_possible_worlds(player_id, value)
 
         return call_bluff, bluff_player_id
 
@@ -185,7 +194,9 @@ class World:
         bluff_player_id = -1
 
         if action == "PASS":
-            self.update_action_pass(player_id, value)
+            # THINK: Do nothing?
+            pass
+            # self.update_action_pass(player_id, value)
 
         elif action == "PLACE":
             call_bluff, bluff_player_id = self.update_action_place(player_id, value, truth)

@@ -116,7 +116,7 @@ class Node:
         self.net.show("{}.html".format(graph_name))
 
         # save graph
-        # self.net.save_graph('graph.html')
+        # self.net.save_graph("{}.html".format(graph_name))
 
 
 

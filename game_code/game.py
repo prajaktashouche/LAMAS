@@ -20,7 +20,7 @@ class Game:
         # build possible worlds at init
         self.world = World(self.deck.dealt_cards)
 
-    def player_announcement(self, player_id, card_val, action, truth):
+    def player_announcement(self, player_id, card_val, action, truth=None, placed_card_val=None):
 
         call_bluff, bluff_player_id = self.world.update_worlds(player_id, card_val, action, truth)
 
@@ -50,10 +50,9 @@ class Game:
                     print("Player:{} LOST!".format(self.players[player_id].name))
 
                 # no bluff is called (not expected)
-                # player hand: remove any card
+                # player hand: remove placed card
                 else:
-                    card = self.players[player_id].get_hand()[0]
-                    self.players[player_id].update_hand(card)
+                    self.players[player_id].update_hand(placed_card_val)
 
         elif action == "PASS":
             pass    # do nothing

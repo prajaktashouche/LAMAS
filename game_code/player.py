@@ -94,7 +94,7 @@ class Player:
         i = 0
         idx_to_remove = -1
         for cObj in self.hand:
-            if cObj.card == value:
+            if cObj.val == value:
                 idx_to_remove = i
             i += 1
 
