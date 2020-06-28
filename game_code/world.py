@@ -68,7 +68,7 @@ class World:
                 for pos in player.possible_worlds:
                     to_node_id = self.get_node_key(pos)
                     if to_node_id is not None:
-                        if world_id != to_node_id:
+                        if world_id != to_node_id:  # remove relations to self, no reflexivity
                             self.relations[i] = [world_id, to_node_id, player.get_color(), player_idx]
                             i += 1
                 player_idx += 1
@@ -95,6 +95,7 @@ class World:
             if value not in player_hand:
                 keys_to_remove.append(key)
 
+        # do NOT remove real world
         if 0 in keys_to_remove:
             keys_to_remove.remove(0)
 
@@ -143,6 +144,7 @@ class World:
             if value in player_hand:
                 keys_to_remove.append(key)
 
+        # do NOT remove real world
         if 0 in keys_to_remove:
             keys_to_remove.remove(0)
 
@@ -152,10 +154,6 @@ class World:
     def update_action_place(self, player_id, value, truth):
 
         call_bluff, bluff_player_id = self.check_statement(player_id, value)
-
-        # THINK: how to simulate player announces false statement and bluff is not called?
-        if call_bluff:
-            call_bluff = random.getrandbits(1)
 
         # player announced true statement
         if truth:

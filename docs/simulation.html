@@ -6,12 +6,18 @@ layout: default
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/simulation.css">
 
 <div>
+    
     <h1>Simulation</h1>
+
+    <p>
+        We have 3 players: Alice, Bob and Carol. The deck consists of A&spades; 2&spades; 3&spades; <span class="hearts">A&hearts; 2&hearts; 3&hearts;</span>. At the beginning of the game, each player is given two cards at random from the deck. The deal is shown on the left side of the simulation.
+    </p>
 
     <div class="flex-container">
         <div class="sim">
             {% include graph.html %}
         </div>
+
         <section class="player-container">
 
             <div class="cards-container p1">
@@ -38,16 +44,25 @@ layout: default
                 </div>
             </div>
         </section>
+    </div>    
+
+    <p>Click on the buttons inside the tabbed menu for different plays:</p>
+
+    <div class="tab">
+        <button class="tab-links" onclick="openPlay(event, 'play1')">Play 1</button>
+        <button class="tab-links" onclick="openPlay(event, 'play2')">Play 2</button>
+    </div>
+
+    <div id="play1" class="tab-content">
+        {% include play1.html %}
+    </div>
+
+    <div id="play2" class="tab-content">
+        {% include play2.html %}
     </div>
 
 </div>
 
-<div>
-    <section class="controls-container">
-        <div>
-            <button onclick="goToNextStage(true)">Next Action</button>
-            <button onclick="drawGraph()">Reset</button>
-        </div>
-        <div id="announcement"></div>
-    </section>
-</div>
+<script src="{{ site.baseurl }}/assets/scripts/simulation.js"></script>
+<script src="{{ site.baseurl }}/assets/scripts/data.js"></script>
+<script src="{{ site.baseurl }}/assets/scripts/main.js"></script>
