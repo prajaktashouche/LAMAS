@@ -23,7 +23,6 @@ var options, data;
 
 let stageCounter = 1;
 
-
 // This method is responsible for drawing the graph, returns the drawn network
 function drawGraph(in_nodes, in_edges) {
 
@@ -45,35 +44,54 @@ function drawGraph(in_nodes, in_edges) {
 }
 
 function drawMain(){
+  displayText('');
   drawGraph(main_nodes, main_edges);
+  stageCounter = 1;
 }
 
 function displayText(playNum) {
-  var i, div_class, div_id;
+  var i, div_class;
 
   div_class = document.getElementsByClassName("play");
   for (i = 0; i < div_class.length; i++) {
     div_class[i].style.display = "none";
   }
-  document.getElementById(playNum + "-turn-" + stageCounter).style.display = "block";
+
+  if (playNum != '') {
+    document.getElementById(playNum + "-turn-" + stageCounter).style.display = "block";
+  }
 }
 
 function nextAction(playNum) {
   
-  if (stageCounter == -1) {
-    drawMain();
-  }
-
   if (playNum == 'p1') {
-    displayText(playNum);
 
-    [nodes, edges] = play1_dict[stageCounter];
+    if (stageCounter > Object.keys(play1_nodes_dict).length){
+      drawMain();
+      return
+    }
+    
+    displayText(playNum);
+    nodes = play1_nodes_dict[stageCounter];
+    edges = play1_edges_dict[stageCounter];
+ 
     drawGraph(nodes, edges);
     
     stageCounter += 1;
   }
   else if (playNum == 'p2') {
+    if (stageCounter > Object.keys(play2_nodes_dict).length) {
+      drawMain();
+      return
+    }
 
+    displayText(playNum);
+    nodes = play2_nodes_dict[stageCounter];
+    edges = play2_edges_dict[stageCounter];
+
+    drawGraph(nodes, edges);
+
+    stageCounter += 1;
   }
 }
 
