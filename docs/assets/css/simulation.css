@@ -218,3 +218,13 @@
   background: #5EB1BF ;
   color: white
 }
+
+.real-node{
+    color: MediumVioletRed; 
+    font-weight: bold;
+}
+
+.root-node{
+    color: MediumSlateBlue; 
+    font-weight: bold;
+}
