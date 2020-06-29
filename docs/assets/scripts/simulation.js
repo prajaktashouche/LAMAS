@@ -21,7 +21,7 @@ var network;
 var container;
 var options, data;
 
-let stageCounter = 1;
+let stageCounter = 0;
 
 // This method is responsible for drawing the graph, returns the drawn network
 function drawGraph(in_nodes, in_edges) {
@@ -45,9 +45,10 @@ function drawGraph(in_nodes, in_edges) {
 
 function drawMain(){
   displayText('');
+  displayState('');
   displayAction('');
   drawGraph(main_nodes, main_edges);
-  stageCounter = 1;
+  stageCounter = 0;
 }
 
 function displayText(playNum) {
@@ -60,6 +61,19 @@ function displayText(playNum) {
 
   if (playNum != '') {
     document.getElementById(playNum + "-turn-" + stageCounter).style.display = "block";
+  }
+}
+
+function displayState(playNum) {
+  var i, div_class;
+
+  div_class = document.getElementsByClassName("state");
+  for (i = 0; i < div_class.length; i++) {
+    div_class[i].style.display = "none";
+  }
+
+  if (playNum != '') {
+    document.getElementById(playNum + "-state-" + stageCounter).style.display = "block";
   }
 }
 
@@ -78,21 +92,22 @@ function displayAction(playNum) {
 
 function nextAction(playNum) {
   
+  stageCounter += 1;
+
   if (playNum == 'p1') {
 
     if (stageCounter > Object.keys(play1_nodes_dict).length){
       drawMain();
       return
-    }
+    }    
     
     displayText(playNum);
+    displayState(playNum);
     displayAction(playNum);
     nodes = play1_nodes_dict[stageCounter];
     edges = play1_edges_dict[stageCounter];
  
-    drawGraph(nodes, edges);
-    
-    stageCounter += 1;
+    drawGraph(nodes, edges);        
   }
   else if (playNum == 'p2') {
     if (stageCounter > Object.keys(play2_nodes_dict).length) {
@@ -101,13 +116,47 @@ function nextAction(playNum) {
     }
 
     displayText(playNum);
+    displayState(playNum);
     displayAction(playNum);
     nodes = play2_nodes_dict[stageCounter];
     edges = play2_edges_dict[stageCounter];
 
     drawGraph(nodes, edges);
+  }
+}
 
-    stageCounter += 1;
+function prevAction(playNum) {
+
+  stageCounter -= 1;
+
+  if (playNum == 'p1') {
+
+    if (stageCounter < 1) {
+      drawMain();
+      return
+    }    
+
+    displayText(playNum);
+    displayState(playNum);
+    displayAction(playNum);
+    nodes = play1_nodes_dict[stageCounter];
+    edges = play1_edges_dict[stageCounter];
+
+    drawGraph(nodes, edges);    
+  }
+  else if (playNum == 'p2') {
+    if (stageCounter < 1) {
+      drawMain();
+      return
+    }
+
+    displayText(playNum);
+    displayState(playNum);
+    displayAction(playNum);
+    nodes = play2_nodes_dict[stageCounter];
+    edges = play2_edges_dict[stageCounter];
+
+    drawGraph(nodes, edges);
   }
 }
 

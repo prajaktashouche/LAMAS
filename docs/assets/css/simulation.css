@@ -75,6 +75,12 @@
     height: auto;
 }
 
+.state {
+    display: None;
+    border: 2px solid #5EB1BF;
+    border-radius: 25px;
+}
+
 .state-container {
     display: flex;
     flex-flow: row wrap;
@@ -182,13 +188,13 @@
   height: auto;
   padding: 15px;
   
-  background: #dc002d60;
+  background: #5EB1BF;
   border-radius: 25px;
 }
 
 .no-bg {
   background: transparent;
-  border: 2px solid #dc002d60;
+  border: 2px solid #5EB1BF;
   border-radius: 25px;
 }
 
@@ -202,7 +208,7 @@
   padding: 10px;
   margin: 5px;
   border-radius: 25px;
-  background: #F9E9EC;
+  background: white;
   font-weight: bold;
   text-align: center;
   align-content: space-between;
