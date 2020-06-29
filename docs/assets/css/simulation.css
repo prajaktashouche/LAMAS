@@ -9,6 +9,8 @@
 
 .play {
     display: None;
+    height: 255px;
+    overflow: auto;
 }
 
 /* Style the tab */
