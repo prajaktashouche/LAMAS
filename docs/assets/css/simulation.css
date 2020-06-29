@@ -92,6 +92,21 @@
     color: black;
 }
 
+.game-info-container {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    border: 2px solid #dc002d;
+    border-radius: 12px;    
+    margin: 5;
+}
+
+.game-info-item {
+    text-align: center;
+    font-weight: bold;
+    padding: 3px;
+}
+
 .p1 {
     background-color: darkred;
     margin-bottom: 5px;
@@ -142,4 +157,52 @@
     flex: 1;
     width: 100%;
     padding: 10px;
+}
+
+.action {
+    display: None;
+}
+
+.action-container {
+  display: flex;
+  flex-direction: column;  
+}
+
+.action-container-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: auto;
+  height: auto;
+  padding: 15px;
+  
+  background: #dc002d60;
+  border-radius: 25px;
+}
+
+.no-bg {
+  background: transparent;
+  border: 2px solid #dc002d60;
+  border-radius: 25px;
+}
+
+.action-container-item {
+  width: auto;
+  color: black;
+}
+
+.action-header {
+    width:150px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 25px;
+  background: #F9E9EC;
+  font-weight: bold;
+  text-align: center;
+  align-content: space-between;
+}
+
+.bg {
+  background: #5EB1BF ;
+  color: white
 }

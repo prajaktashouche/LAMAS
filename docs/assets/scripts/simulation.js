@@ -45,6 +45,7 @@ function drawGraph(in_nodes, in_edges) {
 
 function drawMain(){
   displayText('');
+  displayAction('');
   drawGraph(main_nodes, main_edges);
   stageCounter = 1;
 }
@@ -62,6 +63,19 @@ function displayText(playNum) {
   }
 }
 
+function displayAction(playNum) {
+  var i, div_class;
+
+  div_class = document.getElementsByClassName("action");
+  for (i = 0; i < div_class.length; i++) {
+    div_class[i].style.display = "none";
+  }
+
+  if (playNum != '') {
+    document.getElementById(playNum + "-action-" + stageCounter).style.display = "block";
+  }
+}
+
 function nextAction(playNum) {
   
   if (playNum == 'p1') {
@@ -72,6 +86,7 @@ function nextAction(playNum) {
     }
     
     displayText(playNum);
+    displayAction(playNum);
     nodes = play1_nodes_dict[stageCounter];
     edges = play1_edges_dict[stageCounter];
  
@@ -86,6 +101,7 @@ function nextAction(playNum) {
     }
 
     displayText(playNum);
+    displayAction(playNum);
     nodes = play2_nodes_dict[stageCounter];
     edges = play2_edges_dict[stageCounter];
 

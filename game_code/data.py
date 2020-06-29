@@ -4,6 +4,7 @@ import os
 
 FILENAME = './data.js'
 
+
 class Data:
     def __init__(self):
         self.p1_files = []

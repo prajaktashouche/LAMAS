@@ -72,7 +72,7 @@ def play2(game):
 def main():
     print('Main')
     game = Game()
-    # game.show_world("main")
+    game.show_world("main")
 
     # Player has to place cards in order of 1, 2, 3
 

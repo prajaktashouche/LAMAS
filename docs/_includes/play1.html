@@ -8,7 +8,45 @@
     </section>
 
     <section>
-        <div id="p1-turn-1" class="play">
+        {% for item in site.data.plays %}
+        <div id="{{ item.play }}-action-{{ item.turn }}" class="action">
+            <section class="action-container">
+                <div class="action-container-card">
+                    <div class="action-container-item">
+                        <span class = "action-header">Turn: </span>
+                        <span>{{ item.turn }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class = "action-header">Player:     </span>
+                        <span>{{ item.player }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class = "action-header">Card: </span>
+                        <span>{{ item.card }}</span>
+                    </div>
+                </div>
+                <div class="action-container-card no-bg">
+                    <div class="action-container-item">
+                        <span class = "action-header bg">Announcement: </span>
+                        <span>{{ item.announcement }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class = "action-header bg">Statement:     </span>
+                        <span>{{ item.statement }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class = "action-header bg">Placed Card: </span>
+                        <span>{{ item.placed }}</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        {% endfor %}
+    </section>
+
+    <section>
+        <div id="p1-turn-1" class="play">            
+
             Alice places down A&spades; and truthfully announces she has put down an Ace. Bob could doubt, however neither of his cards are aces, so he believes it would be wise not to. Carol could also doubt, since she has one Ace (<span class="hearts">A&hearts;</span>), however she does not know whether it is Alice or Bob has the other Ace, so she waits. As neither has doubted, Bob can now infer that Carol does not have 2 aces, and Carol can infer that Bob does not have 2 aces.
             
             <p class="state-p">State:</p>
