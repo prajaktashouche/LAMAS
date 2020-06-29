@@ -49,35 +49,86 @@
 
             Alice places down A&spades; and truthfully announces she has put down an Ace. Bob could doubt, however neither of his cards are aces, so he believes it would be wise not to. Carol could also doubt, since she has one Ace (<span class="hearts">A&hearts;</span>), however she does not know whether it is Alice or Bob has the other Ace, so she waits. As neither has doubted, Bob can now infer that Carol does not have 2 aces, and Carol can infer that Bob does not have 2 aces.
             
+        <div id="p1-turn-1" class="play">
+            Alice places down A&spades; and truthfully announces she has put down an Ace. Bob could doubt, however
+            neither of his cards are aces, so he believes it would be wise not to. Carol could also doubt, since she has
+            one Ace (<span class="hearts">A&hearts;</span>), however she does not know whether it is Alice or Bob has
+            the other Ace, so she waits. As neither has doubted, Bob can now infer that Carol does not have 2 aces, and
+            Carol can infer that Bob does not have 2 aces.
+
             <p class="state-p">State:</p>
-            
+
             <div class="state-container">
                 <div class="cards-container p1">
                     <div class="player-name">Alice</div>
-                    <div class="image-container">                        
-                        <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">
+                    <div class="image-container">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-3 hearts" href="#">
+                                    <span class="rank">3</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">-->
                     </div>
                 </div>
                 <div class="cards-container p2">
                     <div class="player-name">Bob</div>
                     <div class="image-container">
-                        <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">
-                        <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-2 hearts" href="#">
+                                    <span class="rank">2</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="card rank-3 spades" href="#">
+                                    <span class="rank">3</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">-->
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">-->
                     </div>
                 </div>
 
                 <div class="cards-container p3">
                     <div class="player-name">Charlie</div>
                     <div class="image-container">
-                        <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">
-                        <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-a hearts" href="#">
+                                    <span class="rank">A</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="card rank-2 hearts" href="#">
+                                    <span class="rank">3</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">-->
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">-->
                     </div>
                 </div>
 
                 <div class="cards-container place">
                     <div class="player-name">Placed Cards</div>
                     <div class="image-container">
-                        <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-a spades" href="#">
+                                    <span class="rank">A</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">-->
                     </div>
                 </div>
             </div>
@@ -85,126 +136,263 @@
         </div>
 
         <div id="p1-turn-2" class="play">
-            Bob places down 🂣 and lies that he has placed down a 2. Alice chooses not to doubt, as she does not own any 2s. Carol does not doubt either, as she does not have both 2s. But now, again, as neither of them has doubted, Alice and Carol both know that the other does not have both 2s.
+            Bob places down 🂣 and lies that he has placed down a 2. Alice chooses not to doubt, as she does not own any
+            2s. Carol does not doubt either, as she does not have both 2s. But now, again, as neither of them has
+            doubted, Alice and Carol both know that the other does not have both 2s.
 
             <p class="state-p">State:</p>
 
             <div class="state-container">
                 <div class="cards-container p1">
                     <div class="player-name">Alice</div>
-                    <div class="image-container">                        
-                        <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">
+                    <div class="image-container">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-3 hearts" href="#">
+                                    <span class="rank">3</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">-->
                     </div>
                 </div>
                 <div class="cards-container p2">
                     <div class="player-name">Bob</div>
-                    <div class="image-container">                        
-                        <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">
+                    <div class="image-container">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-3 spades" href="#">
+                                    <span class="rank">3</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">-->
                     </div>
                 </div>
 
                 <div class="cards-container p3">
                     <div class="player-name">Charlie</div>
                     <div class="image-container">
-                        <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">
-                        <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-a hearts" href="#">
+                                    <span class="rank">A</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="card rank-2 hearts" href="#">
+                                    <span class="rank">2</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">-->
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">-->
                     </div>
                 </div>
 
                 <div class="cards-container place">
                     <div class="player-name">Placed Cards</div>
                     <div class="image-container">
-                        <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">
-                        <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-a spades" href="#">
+                                    <span class="rank">A</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="card rank-2 spades" href="#">
+                                    <span class="rank">2</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">-->
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">-->
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="p1-turn-3" class="play">
-            Carol must now place down one or more 3s. However, she does not have any, and so she places down 🂱 and lies that she has put down a 3.\n"
+            Carol must now place down one or more 3s. However, she does not have any, and so she places down 🂱 and lies
+            that she has put down a 3."
 
             <p class="state-p">State:</p>
 
             <div class="state-container">
                 <div class="cards-container p1">
                     <div class="player-name">Alice</div>
-                    <div class="image-container">                        
-                        <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">
+                    <div class="image-container">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-3 hearts" href="#">
+                                    <span class="rank">3</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">-->
                     </div>
                 </div>
                 <div class="cards-container p2">
                     <div class="player-name">Bob</div>
-                    <div class="image-container">                        
-                        <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">
+                    <div class="image-container">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-3 spades" href="#">
+                                    <span class="rank">3</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">-->
                     </div>
                 </div>
 
                 <div class="cards-container p3">
                     <div class="player-name">Charlie</div>
                     <div class="image-container">
-                        <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-a hearts" href="#">
+                                    <span class="rank">A</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">-->
                     </div>
                 </div>
 
                 <div class="cards-container place">
                     <div class="player-name">Placed Cards</div>
                     <div class="image-container">
-                        <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">
-                        <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">
-                        <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-a spades" href="#">
+                                    <span class="rank">A</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="card rank-2 spades" href="#">
+                                    <span class="rank">2</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="card rank-2 hearts" href="#">
+                                    <span class="rank">2</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">-->
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">-->
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">-->
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="p1-turn-4" class="play">
-            Alice must once again place down an ace. She places down her 🂳. However, Carol has just put down her ace, so now she knows that either Alice was lying the first round, or she is lying now. She decides to doubt her. The last card in the stack is now turned face up, and it is indeed revealed that Alice was lying. Alice now takes all the 4 cards in the stack into her hand. By Carol announcing the doubt, now Alice and Bob are informed of the fact that Carol either has an ace, or put down an ace in the previous round
+            Alice must once again place down an ace. She places down her 🂳. However, Carol has just put down her ace,
+            so now she knows that either Alice was lying the first round, or she is lying now. She decides to doubt her.
+            The last card in the stack is now turned face up, and it is indeed revealed that Alice was lying. Alice now
+            takes all the 4 cards in the stack into her hand. By Carol announcing the doubt, now Alice and Bob are
+            informed of the fact that Carol either has an ace, or put down an ace in the previous round
 
         </div>
 
         <div id="p1-turn-5" class="play">
-            Once Alice takes the stack, she knows that Carol no longer has that ace, since both aces were in the stack. What's more, Alice actually knows that both Bob and Carol have 2s, since all the aces and 3s are now in her hand
+            Once Alice takes the stack, she knows that Carol no longer has that ace, since both aces were in the stack.
+            What's more, Alice actually knows that both Bob and Carol have 2s, since all the aces and 3s are now in her
+            hand
         </div>
 
         <div id="p1-turn-6" class="play">
             Charlie
 
             <p class="state-p">State:</p>
-            
+
             <div class="state-container">
                 <div class="cards-container p1">
                     <div class="player-name">Alice</div>
-                    <div class="image-container">                        
-                        <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">
+                    <div class="image-container">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-3 hearts" href="#">
+                                    <span class="rank">3</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">-->
                     </div>
                 </div>
                 <div class="cards-container p2">
                     <div class="player-name">Bob</div>
-                    <div class="image-container">                        
-                        <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">
+                    <div class="image-container">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-3 spades" href="#">
+                                    <span class="rank">3</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">-->
                     </div>
                 </div>
 
                 <div class="cards-container p3">
                     <div class="player-name">Charlie</div>
                     <div class="image-container">
-                        
+
                     </div>
                 </div>
 
                 <div class="cards-container place">
                     <div class="player-name">Placed Cards</div>
                     <div class="image-container">
-                        <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">
-                        <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">
-                        <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">
-                        <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">
+                        <ul class="hand">
+                            <li>
+                                <a class="card rank-a spades" href="#">
+                                    <span class="rank">A</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="card rank-2 spades" href="#">
+                                    <span class="rank">2</span>
+                                    <span class="suit">&spades;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="card rank-2 hearts" href="#">
+                                    <span class="rank">3</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="card rank-a hearts" href="#">
+                                    <span class="rank">A</span>
+                                    <span class="suit">&hearts;</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">-->
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">-->
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">-->
+                        <!--                        <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">-->
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
-    
 </div>
