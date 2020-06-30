@@ -60,6 +60,10 @@
     border-radius: 10px;
 }
 
+.deal {
+    display: none;
+}
+
 .player-container {
     display: flex;
     flex-direction: column;

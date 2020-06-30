@@ -77,6 +77,7 @@ class Node:
 
         root_color = 'MediumSlateBlue'
         real_color = 'MediumVioletRed'
+        mark_color = 'MediumOrchid'
 
         # Add root nodes, possible worlds
         for root_id in self.worlds:
@@ -93,8 +94,13 @@ class Node:
                 self.net.add_node(root_id, label="w{}".format(
                     root_id), title=title, color=real_color, shape="ellipse")
             else:
-                self.net.add_node(root_id, label="w{}".format(
-                    root_id), title=title, color=root_color, shape="ellipse")
+                relations = [x.to_node_id for x in self.edges if x.from_node_id == 0]
+                if root_id in relations:
+                    self.net.add_node(root_id, label="w{}".format(
+                        root_id), title=title, color=mark_color, shape="ellipse")
+                else:
+                    self.net.add_node(root_id, label="w{}".format(
+                        root_id), title=title, color=root_color, shape="ellipse")
 
     def add_net_edges(self):
 

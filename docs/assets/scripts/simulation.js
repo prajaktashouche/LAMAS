@@ -22,6 +22,14 @@ function openPlay(evt, playName) {
   document.getElementById(playName).style.display = "block";
   evt.currentTarget.className += " active";
 
+  if (['play1', 'play2'].includes(playName)){
+    document.getElementById('deal-1').style.display = "block";
+    document.getElementById('deal-2').style.display = "none";
+  } else {
+    document.getElementById('deal-1').style.display = "none";
+    document.getElementById('deal-2').style.display = "block";
+  }
+
   drawMain();
 }
 
@@ -125,6 +133,20 @@ function nextAction(playNum) {
 
     drawGraph(nodes, edges);
   }
+  else if (playNum == 'p3') {
+    if (stageCounter > Object.keys(play3_nodes_dict).length) {
+      drawMain();
+      return
+    }
+
+    displayText(playNum);
+    displayState(playNum);
+    displayAction(playNum);
+    nodes = play3_nodes_dict[stageCounter];
+    edges = play3_edges_dict[stageCounter];
+
+    drawGraph(nodes, edges);
+  }
 }
 
 function prevAction(playNum) {
@@ -157,6 +179,20 @@ function prevAction(playNum) {
     displayAction(playNum);
     nodes = play2_nodes_dict[stageCounter];
     edges = play2_edges_dict[stageCounter];
+
+    drawGraph(nodes, edges);
+  }
+  else if (playNum == 'p3') {
+    if (stageCounter < 1) {
+      drawMain();
+      return
+    }
+
+    displayText(playNum);
+    displayState(playNum);
+    displayAction(playNum);
+    nodes = play3_nodes_dict[stageCounter];
+    edges = play3_edges_dict[stageCounter];
 
     drawGraph(nodes, edges);
   }

@@ -5,11 +5,11 @@ from world import World
 
 class Game:
 
-    def __init__(self):
+    def __init__(self, deal_type):
 
         # build deck with explicit cards
         self.deck = Deck()
-        self.deck.build_dev()
+        self.deck.build_dev(deal_type)
 
         # we have 3 players initialized with player IDs
         self.players = [Player("Alice", 0), Player("Bob", 1), Player("Charlie", 2)]

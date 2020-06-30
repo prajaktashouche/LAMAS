@@ -17,6 +17,8 @@ class World:
         self.assign_real_world(real_world)
         self.generate_relations()
 
+        self.placed_cards = {}
+
     def get_node_key(self, value):
 
         for key, val in self.possible_worlds.items():
@@ -87,6 +89,12 @@ class World:
         node = Node(nodes=self.possible_worlds, edges=self.relations)
         node.show_kripke_model(graph_name)
 
+    def add_to_placed_cards(self, player_id, value):
+        if player_id in self.placed_cards:
+            self.placed_cards[player_id].append(value)
+        else:
+            self.placed_cards[player_id] = [value]
+
     def remove_possible_worlds(self, player_id, value):
         keys_to_remove = []
 
@@ -119,6 +127,12 @@ class World:
 
                 hand = self.get_node_value(to_node_key)
                 player_hand = [x[0] for x in hand[player_id]]
+
+                # remove placed cards from the hand before checking
+                if player_id in self.placed_cards:
+                    for val in self.placed_cards[player_id]:
+                        if val in player_hand:
+                            player_hand.remove(val)
 
                 if player_idx in checklist:
                     checklist[player_idx].append(1 if value in player_hand else 0)
@@ -169,6 +183,7 @@ class World:
             # other players: remove possible worlds where announced card does not exist
             else:
                 self.remove_possible_worlds(player_id, value)
+                self.add_to_placed_cards(player_id, value)
 
         # player announced false statement
         else:
@@ -184,6 +199,7 @@ class World:
             # other players: update possible worlds with wrongly announced card
             else:
                 self.remove_possible_worlds(player_id, value)
+                self.add_to_placed_cards(player_id, value)
 
         return call_bluff, bluff_player_id
 

@@ -9,6 +9,7 @@ class Data:
     def __init__(self):
         self.p1_files = []
         self.p2_files = []
+        self.p3_files = []
 
         self.p1_nodes = {}
         self.p1_edges = {}
@@ -16,10 +17,14 @@ class Data:
         self.p2_nodes = {}
         self.p2_edges = {}
 
+        self.p3_nodes = {}
+        self.p3_edges = {}
+
         self.get_files()
 
         self.read_files(self.p1_files, self.p1_nodes, self.p1_edges)
         self.read_files(self.p2_files, self.p2_nodes, self.p2_edges)
+        self.read_files(self.p3_files, self.p3_nodes, self.p3_edges)
 
         if os.path.exists(FILENAME):
             os.remove(FILENAME)
@@ -31,9 +36,12 @@ class Data:
                 self.p1_files.append(file)
             elif file.startswith("p2_"):
                 self.p2_files.append(file)
+            elif file.startswith("p3_"):
+                self.p3_files.append(file)
 
         self.p1_files.sort()
         self.p2_files.sort()
+        self.p3_files.sort()
 
     @staticmethod
     def read_files(in_files, in_nodes, in_edges):
@@ -77,5 +85,9 @@ class Data:
 d = Data()
 d.write_files(d.p1_nodes, "play1_nodes_dict")
 d.write_files(d.p1_edges, "play1_edges_dict")
+
 d.write_files(d.p2_nodes, "play2_nodes_dict")
 d.write_files(d.p2_edges, "play2_edges_dict")
+
+d.write_files(d.p3_nodes, "play3_nodes_dict")
+d.write_files(d.p3_edges, "play3_edges_dict")

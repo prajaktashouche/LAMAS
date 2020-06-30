@@ -24,32 +24,11 @@ layout: default
             {% include graph.html %}
         </div>
 
-        <section class="player-container">
-
-            <div class="cards-container p1">
-                <div class="player-name">Alice</div>
-                <div class="image-container-side">                    
-                    <img src="{{ site.baseurl }}/assets/images/AS.png" alt="AS" class="cards-img">
-                    <img src="{{ site.baseurl }}/assets/images/3H.png" alt="3H" class="cards-img">
-                </div>
-            </div>
-
-            <div class="cards-container p2">
-                <div class="player-name">Bob</div>
-                <div class="image-container-side">                    
-                    <img src="{{ site.baseurl }}/assets/images/2S.png" alt="2S" class="cards-img">
-                    <img src="{{ site.baseurl }}/assets/images/3S.png" alt="3S" class="cards-img">
-                </div>
-            </div>
-
-            <div class="cards-container p3">
-                <div class="player-name">Charlie</div>
-                <div class="image-container-side">                    
-                    <img src="{{ site.baseurl }}/assets/images/AH.png" alt="AH" class="cards-img">
-                    <img src="{{ site.baseurl }}/assets/images/2H.png" alt="2H" class="cards-img">
-                </div>
-            </div>
-        </section>
+        <div id="deal-1" class="deal">
+            {% include deals/deal1.html %}</div>
+        <div id="deal-2" class="deal">
+            {% include deals/deal2.html %}
+        </div>
     </div>
 
     <p>Click on the buttons inside the tabbed menu for different plays:</p>

@@ -1,0 +1,31 @@
+- play: p3
+  turn: 1
+  player: Alice
+  card: 1
+  announcement: Place
+  statement: True
+  placed: 1
+
+- play: p3
+  turn: 2
+  player: Bob
+  card: 2
+  announcement: Place
+  statement: True
+  placed: 2
+
+- play: p3
+  turn: 3
+  player: Charlie
+  card: 3
+  announcement: Place
+  statement: True
+  placed: 3
+
+- play: p3
+  turn: 4
+  player: Alice
+  card: 1
+  announcement: Place
+  statement: False
+  placed: 3

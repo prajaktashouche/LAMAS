@@ -25,24 +25,27 @@ class Deck:
             ret_obj.append(c.card)
         return ret_obj
 
-    def build_dev(self):
+    def build_dev(self, deal_type):
         self.cards.clear()
 
-        # self.cards.append(Card('3S'))
-        # self.cards.append(Card('1H'))
-        # self.cards.append(Card('2H'))
-        #
-        # self.cards.append(Card('2S'))
-        # self.cards.append(Card('1S'))
-        # self.cards.append(Card('3H'))
+        if deal_type == 1:
+            self.cards.append(Card('1H'))
+            self.cards.append(Card('2S'))
+            self.cards.append(Card('1S'))
 
-        self.cards.append(Card('1H'))
-        self.cards.append(Card('2S'))
-        self.cards.append(Card('1S'))
+            self.cards.append(Card('2H'))
+            self.cards.append(Card('3S'))
+            self.cards.append(Card('3H'))
 
-        self.cards.append(Card('2H'))
-        self.cards.append(Card('3S'))
-        self.cards.append(Card('3H'))
+        else:
+            self.cards.append(Card('2H'))
+            self.cards.append(Card('1H'))
+            self.cards.append(Card('1S'))
+
+            self.cards.append(Card('3S'))
+            self.cards.append(Card('2S'))
+            self.cards.append(Card('3H'))
+
 
     def is_empty(self):
         return len(self.cards) == 0

@@ -70,6 +70,7 @@ def play2(game):
 
 
 def play3(game):
+
     # Alice truthfully places 1
     print("---PLAYER ACTION---")
     game.player_announcement(0, '1', 'PLACE', True)
@@ -82,35 +83,31 @@ def play3(game):
     game.show_player_hands()
     game.show_world("p3_turn2")
 
-    # Charlie dishonestly places 3
+    # Charlie truthfully places 3
     print("---PLAYER ACTION---")
-    game.player_announcement(2, '3', 'PLACE', False, '2')
+    game.player_announcement(2, '3', 'PLACE', True)
     game.show_player_hands()
     game.show_world("p3_turn3")
 
-    # Alice passes
+    # Alice dishonestly places 1
     print("---PLAYER ACTION---")
-    game.player_announcement(0, '1', 'PASS')
+    game.player_announcement(0, '1', 'PLACE', False)
     game.show_player_hands()
     game.show_world("p3_turn4")
-
-    # Bob dishonestly places 1
-    print("---PLAYER ACTION---")
-    game.player_announcement(1, '1', 'PLACE', False, '3')
-    game.show_player_hands()
-    game.show_world("p3_turn5_final")
 
 
 def main():
     print('Main')
-    game = Game()
+
+    # pass 1 for play1 and play2
+    # pass 2 for play3
+    game = Game(2)
     game.show_world("main")
 
     # Player has to place cards in order of 1, 2, 3
-
     # play1(game)
-    play2(game)
-    # play3(game)
+    # play2(game)
+    play3(game)
 
 if __name__ == "__main__":
     main()

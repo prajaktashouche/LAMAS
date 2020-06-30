@@ -3,10 +3,72 @@
 
 <div>
     <section class="controls-container">
-        <button onclick="prevAction('p2')">Previous Turn</button>
-        <button onclick="nextAction('p2')">Next Turn</button>
+        <button onclick="prevAction('p3')">Previous Turn</button>
+        <button onclick="nextAction('p3')">Next Turn</button>
         <button onclick="drawMain()">Reset</button>
     </section>
 
     <p class="state-p">State:</p>
+
+    <section>
+        {% for item in site.data.play3 %}
+        <div id="{{ item.play }}-action-{{ item.turn }}" class="action">
+            <section class="action-container">
+                <div class="action-container-card">
+                    <div class="action-container-item">
+                        <span class="action-header">Turn: </span>
+                        <span>{{ item.turn }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class="action-header">Player:     </span>
+                        <span>{{ item.player }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class="action-header">Card: </span>
+                        <span>{{ item.card }}</span>
+                    </div>
+                </div>
+                <div class="action-container-card no-bg">
+                    <div class="action-container-item">
+                        <span class="action-header bg">Announcement: </span>
+                        <span>{{ item.announcement }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class="action-header bg">Statement:     </span>
+                        <span>{{ item.statement }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class="action-header bg">Placed Card: </span>
+                        <span>{{ item.placed }}</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="{{ item.play }}-state-{{ item.turn }}" class="state">
+            {% include states/{{ item.play }}_t{{ item.turn }}.html %}
+        </div>
+        {% endfor %}
+    </section>
+
+    <p class="state-p">Description:</p>
+
+    <section>
+        <div id="p3-turn-1" class="play">
+            
+        </div>
+
+        <div id="p3-turn-2" class="play">
+            
+        </div>
+
+        <div id="p3-turn-3" class="play">
+            
+        </div>
+
+        <div id="p3-turn-4" class="play">
+            
+        </div>
+
+    </section>
 </div>

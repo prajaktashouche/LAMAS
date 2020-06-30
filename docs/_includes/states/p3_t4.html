@@ -1,0 +1,49 @@
+<div class="state-container">
+    <div class="cards-container p1">
+        <div class="player-name">Alice</div>
+        <div class="image-container">
+        </div>
+    </div>
+
+    <div class="cards-container p2">
+        <div class="player-name">Bob</div>
+        <div class="image-container">
+            <ul class="hand">                
+                <li>
+                    {% include cards/1H.html %}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cards-container p3">
+        <div class="player-name">Charlie</div>
+        <div class="image-container">
+            <ul class="hand">                
+                <li>
+                    {% include cards/2H.html %}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cards-container place">
+        <div class="player-name">Placed Cards</div>
+        <div class="image-container">
+            <ul class="hand">
+                <li>
+                    {% include cards/1S.html %}
+                </li>
+                <li>
+                    {% include cards/2S.html %}
+                </li>
+                <li>
+                    {% include cards/3S.html %}
+                </li>
+                <li>
+                    {% include cards/3H.html %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
