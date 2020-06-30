@@ -109,8 +109,8 @@ def main():
     # Player has to place cards in order of 1, 2, 3
 
     # play1(game)
-    # play2(game)
-    play3(game)
+    play2(game)
+    # play3(game)
 
 if __name__ == "__main__":
     main()

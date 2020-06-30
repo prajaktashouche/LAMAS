@@ -7,4 +7,75 @@
         <button onclick="nextAction('p2')">Next Turn</button>
         <button onclick="drawMain()">Reset</button>
     </section>
+
+    <p class="state-p">State:</p>
+
+    <section>
+        {% for item in site.data.play2 %}
+        <div id="{{ item.play }}-action-{{ item.turn }}" class="action">
+            <section class="action-container">
+                <div class="action-container-card">
+                    <div class="action-container-item">
+                        <span class="action-header">Turn: </span>
+                        <span>{{ item.turn }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class="action-header">Player:     </span>
+                        <span>{{ item.player }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class="action-header">Card: </span>
+                        <span>{{ item.card }}</span>
+                    </div>
+                </div>
+                <div class="action-container-card no-bg">
+                    <div class="action-container-item">
+                        <span class="action-header bg">Announcement: </span>
+                        <span>{{ item.announcement }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class="action-header bg">Statement:     </span>
+                        <span>{{ item.statement }}</span>
+                    </div>
+                    <div class="action-container-item">
+                        <span class="action-header bg">Placed Card: </span>
+                        <span>{{ item.placed }}</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="{{ item.play }}-state-{{ item.turn }}" class="state">
+            {% include states/{{ item.play }}_t{{ item.turn }}.html %}
+        </div>
+        {% endfor %}
+    </section>
+
+    <p class="state-p">Description:</p>
+
+    <section>
+        <div id="p2-turn-1" class="play">
+            Alice places down Ace (A&spades;) and truthfully announces she has put down an Ace. Bob could doubt, however neither of his cards are Aces, so he believes it would be logical not to. Charlie could also doubt, since he has one Ace (<span class="hearts">A&hearts;</span>), however he does not know whether it is Alice or Bob who has the other Ace, so he waits. As neither has doubted, Bob can now infer that Charlie does not have 2 Aces, and Charlie can infer that Bob does not have 2 aces.
+        </div>
+
+        <div id="p2-turn-2" class="play">
+            Bob places down 2 (2&spades;) and truthfully announces he has put down a 2. Alice chooses not to doubt, as
+            she does not own any 2s. Charlie does not doubt either, as he does not have both 2s. But now, again, as
+            neither of them has doubted, Alice and Charlie both know that the other does not have both 2s.
+        </div>
+
+        <div id="p2-turn-3" class="play">
+            Charlie must now place down a 3. However, he does not have any, instead of lying as he did in Play1 he decides to pass this turn.
+        </div>
+
+        <div id="p2-turn-4" class="play">
+            It is Alice's turn now to place a 3. Since her final card is a 3 (<span class="hearts">3&hearts;</span>), she truthfully places the card and wins the round. In the final state of the graph we can see both Bob and Charlie has relation to possible worlds where Alice has a 3 in her hand and thus believes her statement to be true and does not doubt.
+
+            <p>
+                For Example: Bob has access to <span class="root-node">w55</span> from <span class="real-node">w0</span> and Charlie has access to <span class="root-node">w52</span> from <span class="real-node">w0</span>. Both these worlds has Alice with a 3 in her hand.
+            </p>
+        </div>
+
+    </section>
+
 </div>

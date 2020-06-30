@@ -1,3 +1,12 @@
+// initialize global variables.
+var edges;
+var nodes;
+var network;
+var container;
+var options, data;
+
+let stageCounter = 0;
+
 function openPlay(evt, playName) {
   var i, tab_content, tab_links;
 
@@ -12,16 +21,9 @@ function openPlay(evt, playName) {
 
   document.getElementById(playName).style.display = "block";
   evt.currentTarget.className += " active";
+
+  drawMain();
 }
-
-// initialize global variables.
-var edges;
-var nodes;
-var network;
-var container;
-var options, data;
-
-let stageCounter = 0;
 
 // This method is responsible for drawing the graph, returns the drawn network
 function drawGraph(in_nodes, in_edges) {
