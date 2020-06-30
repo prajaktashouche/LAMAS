@@ -1,8 +1,7 @@
 <div class="state-container">
     <div class="cards-container p1">
         <div class="player-name">Alice</div>
-        <div class="image-container">
-            
+        <div class="image-container">            
         </div>
     </div>
     <div class="cards-container p2">
@@ -10,10 +9,7 @@
         <div class="image-container">
             <ul class="hand">
                 <li>
-                    <a class="card rank-3 spades" href="#">
-                        <span class="rank">3</span>
-                        <span class="suit">&spades;</span>
-                    </a>
+                    {% include cards/3S.html %}
                 </li>
             </ul>
         </div>
@@ -24,16 +20,10 @@
         <div class="image-container">
             <ul class="hand">
                 <li>
-                    <a class="card rank-a hearts" href="#">
-                        <span class="rank">A</span>
-                        <span class="suit">&hearts;</span>
-                    </a>
+                    {% include cards/1H.html %}
                 </li>
                 <li>
-                    <a class="card rank-2 hearts" href="#">
-                        <span class="rank">2</span>
-                        <span class="suit">&hearts;</span>
-                    </a>
+                    {% include cards/2H.html %}
                 </li>
             </ul>
         </div>
@@ -44,22 +34,13 @@
         <div class="image-container">
             <ul class="hand">
                 <li>
-                    <a class="card rank-a spades" href="#">
-                        <span class="rank">A</span>
-                        <span class="suit">&spades;</span>
-                    </a>
+                    {% include cards/1S.html %}
                 </li>
                 <li>
-                    <a class="card rank-2 spades" href="#">
-                        <span class="rank">2</span>
-                        <span class="suit">&spades;</span>
-                    </a>
+                    {% include cards/2S.html %}
                 </li>
                 <li>
-                    <a class="card rank-3 hearts" href="#">
-                        <span class="rank">3</span>
-                        <span class="suit">&hearts;</span>
-                    </a>
+                    {% include cards/3H.html %}
                 </li>
             </ul>
         </div>

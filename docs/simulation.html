@@ -57,6 +57,7 @@ layout: default
     <div class="tab">
         <button class="tab-links" onclick="openPlay(event, 'play1')">Play 1</button>
         <button class="tab-links" onclick="openPlay(event, 'play2')">Play 2</button>
+        <button class="tab-links" onclick="openPlay(event, 'play3')">Play 3</button>
     </div>
 
     <div id="play1" class="tab-content">
@@ -65,6 +66,10 @@ layout: default
 
     <div id="play2" class="tab-content">
         {% include play2.html %}
+    </div>
+
+    <div id="play3" class="tab-content">
+        {% include play3.html %}
     </div>
 
 </div>
