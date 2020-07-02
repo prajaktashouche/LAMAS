@@ -166,7 +166,7 @@ function prevAction(playNum) {
 
   if (playNum == 'p1') {
 
-    if (stageCounter < 1) {
+    if (stageCounter < 0) {
       drawMain();
       return
     }    
@@ -180,7 +180,7 @@ function prevAction(playNum) {
     drawGraph(nodes, edges);    
   }
   else if (playNum == 'p2') {
-    if (stageCounter < 1) {
+    if (stageCounter < 0) {
       drawMain();
       return
     }
@@ -194,7 +194,7 @@ function prevAction(playNum) {
     drawGraph(nodes, edges);
   }
   else if (playNum == 'p3') {
-    if (stageCounter < 1) {
+    if (stageCounter < 0) {
       drawMain();
       return
     }

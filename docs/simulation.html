@@ -15,16 +15,32 @@ layout: default
     <p>
         We have 3 players: Alice, Bob and Charlie. The deck consists of A&spades; 2&spades; 3&spades; <span
             class="hearts">A&hearts; 2&hearts; 3&hearts;</span>. At the beginning of the game, each player is given two
-        cards at random from the deck. The deal is shown on the right side of the graph. The real world is <span
-            class="real-node">w0</span>.
+        cards at random from the deck. The deal is shown on the right side of the graph.
     </p>
     <p>
-        To see the state of each player's hand, hover over each node in the Kripke model. The colored arrows show
-        accessiblity relations for <span style="color: red">Alice</span>, <span style="color: blue">Bob</span> and <span
-            style="color: green">Charlie</span>.
+        To see the state of each player's hand, hover over each node in the Kripke model. The real world is <span
+            class="real-node">w0</span>. The colored arrows show accessiblity relations for <span style="color: red">Alice</span>,
+        <span style="color: blue">Bob</span> and <span style="color: green">Charlie</span>.
         Each turn, each player decides to <strong>place</strong> a card or <strong>pass</strong> (see "Announcement"
-        below). Cards are placed face down. When placing a card, they can make a <strong>truthful</strong> or <strong>false</strong>
-        announcement (see "Statement" below).
+        below). Cards are placed face down. When placing a card, they can make a <strong>truthful</strong> (<img
+            src="https://latex.codecogs.com/png.latex?%21%20%5Cphi" alt="%21%20%5Cphi"/>) or <strong>false</strong>
+        (<img src="https://latex.codecogs.com/png.latex?%5Ctextexclamdown%20%5Cphi" alt="%5Ctextexclamdown%20%5Cphi"/>)
+        announcement (see "Statement" below). The following notation is used for a proposition:
+        <br/>
+        <img src="https://latex.codecogs.com/png.latex?X(aC\land&space;bD)" alt="X(aC\land&space;bD)"/>, where
+        <img src="https://latex.codecogs.com/png.latex?X" alt="X"/> is a predicate representing a player's hand,
+        <img src="https://latex.codecogs.com/png.latex?(A,B,C)" alt="(A,B,C)"/>;
+        <br/>
+        <img src="https://latex.codecogs.com/png.latex?a" alt="a"/> and
+        <img src="https://latex.codecogs.com/png.latex?c" alt="c"/> are numbers in
+        <img src="https://latex.codecogs.com/png.latex?1,2,3" alt="1,2,3"/>, the card numbers;
+        <br/>
+        and, when known,
+        <img src="https://latex.codecogs.com/png.latex?C" alt="C"/> and
+        <img src="https://latex.codecogs.com/png.latex?D" alt="D"/> are the card suits, either
+        <img src="https://latex.codecogs.com/png.latex?H" alt="H"/> (hearts) or
+        <img src="https://latex.codecogs.com/png.latex?S" alt="S"/> (spades), and when unknown,
+        <img src="https://latex.codecogs.com/png.latex?U" alt="U"/>.
     </p>
 
     <div class="flex-container">
