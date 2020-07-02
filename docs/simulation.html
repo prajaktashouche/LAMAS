@@ -13,10 +13,18 @@ layout: default
     <h1>Simulation</h1>
 
     <p>
-    We have 3 players: Alice, Bob and Charlie. The deck consists of A&spades; 2&spades; 3&spades; <span class="hearts">A&hearts; 2&hearts; 3&hearts;</span>. At the beginning of the game, each player is given two cards at random from the deck. The deal is shown on the right side of the graph. The real world is <span class="real-node">w0</span>.    
+        We have 3 players: Alice, Bob and Charlie. The deck consists of A&spades; 2&spades; 3&spades; <span
+            class="hearts">A&hearts; 2&hearts; 3&hearts;</span>. At the beginning of the game, each player is given two
+        cards at random from the deck. The deal is shown on the right side of the graph. The real world is <span
+            class="real-node">w0</span>.
     </p>
     <p>
-        Explain Pass and Placing card with true or false statement.
+        To see the state of each player's hand, hover over each node in the Kripke model. The colored arrows show
+        accessiblity relations for <span style="color: red">Alice</span>, <span style="color: blue">Bob</span> and <span
+            style="color: green">Charlie</span>.
+        Each turn, each player decides to <strong>place</strong> a card or <strong>pass</strong> (see "Announcement"
+        below). Cards are placed face down. When placing a card, they can make a <strong>truthful</strong> or <strong>false</strong>
+        announcement (see "Statement" below).
     </p>
 
     <div class="flex-container">
@@ -25,7 +33,8 @@ layout: default
         </div>
 
         <div id="deal-1" class="deal">
-            {% include deals/deal1.html %}</div>
+            {% include deals/deal1.html %}
+        </div>
         <div id="deal-2" class="deal">
             {% include deals/deal2.html %}
         </div>

@@ -31,6 +31,17 @@ function openPlay(evt, playName) {
   }
 
   drawMain();
+
+  // Hackish, to start from state 0 automatically
+  if (['play1'].includes(playName)){
+    nextAction('p1');
+  }
+  else if (['play2'].includes(playName)){
+    nextAction('p2');
+  }
+  else if (['play3'].includes(playName)){
+    nextAction('p3');
+  }
 }
 
 // This method is responsible for drawing the graph, returns the drawn network
