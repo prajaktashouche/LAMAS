@@ -58,7 +58,7 @@ function drawMain(){
   displayState('');
   displayAction('');
   drawGraph(main_nodes, main_edges);
-  stageCounter = 0;
+  stageCounter = -1;
 }
 
 function displayText(playNum) {
