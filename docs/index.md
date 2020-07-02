@@ -26,6 +26,9 @@ In our implementation of the game, we use a smaller version to simplify the game
 
 * original deck size of 52 cards is reduced to 6 cards where the value is from Ace, 2, and 3 with 2 cards each of suit heart and spades. This way each player gets 2 cards each.
 
-* put down only one card at each turn
+* put down only one card at each turn 
+
+With the imposed restrictions the Kripke model consists of 90 possible worlds and 5400 relations
+<center><img src="assets/images/formula.png" align="center" height="100" width="500"></center>
 
 We show multiple plays of the game, where each player gets 2 cards. Each player puts one card face down and makes an announcement about the value of the card. The other players can either doubt this announcement, based on their current knowledge and common knowledge, or update their knowledge and make a decision about their strategy to play.
