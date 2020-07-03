@@ -63,18 +63,25 @@
         <div id="p1-turn-1" class="play">
             Alice places down Ace (A&spades;) and truthfully announces she has put down an Ace <img
                 src="https://latex.codecogs.com/png.latex?([%21A(1U)])"/>.
-            Bob could doubt, however neither of his cards are Aces, so he believes it would be logical not to. Charlie
-            could also doubt, since he has one Ace (<span class="hearts">A&hearts;</span>), however he does not know
-            whether it is Alice or Bob who has the other Ace, so he waits. As neither has doubted, Bob can now infer
+            Bob could doubt, however neither of his cards are Aces, so he believes it would be logical not to. His
+            knowledge is updated thus
+            <img src="https://latex.codecogs.com/png.latex?[%21A(1U)]A(1U \lor 2H \lor 3H)"/>.
+            Charlie could also doubt, since he has one Ace (<span class="hearts">A&hearts;</span>), however he does not
+            know whether it is Alice or Bob who has the other Ace, so he waits. His knowledge is updated thus
+            <img src="https://latex.codecogs.com/png.latex?[%21A(1U)]A(1S \lor 2S \lor 3U)"/>.
+            As neither has doubted, Bob can now infer
             that Charlie does not have 2 Aces, and Charlie can infer that Bob does not have 2 aces.
         </div>
 
         <div id="p1-turn-2" class="play">
             Bob places down 2 (2&spades;) and truthfully announces he has put down a 2 <img
                 src="https://latex.codecogs.com/png.latex?([%21B(2U)])"/>.
-            Alice chooses not to doubt, as
-            she does not own any 2s. Charlie does not doubt either, as he does not have both 2s. But now, again, as
-            neither of them has doubted, Alice and Charlie both know that the other does not have both 2s.
+            Alice chooses not to doubt, as she does not own any 2s. Her knowledge is updated thus
+            <img src="https://latex.codecogs.com/png.latex?[%21B(2U)]B(1H \lor 2U \lor 3S)"/>.
+            Charlie does not doubt either, as he does not have both 2s. His knowledge is updated thus
+            <img src="https://latex.codecogs.com/png.latex?[%21B(2U)]B(1S \lor 2S \lor 3U)"/>.
+            But now, again, as neither of them has doubted, Alice and Charlie both know that the other does not have
+            both 2s.
         </div>
 
         <div id="p1-turn-3" class="play">
@@ -82,7 +89,11 @@
                 class="hearts">2&hearts;</span>) from his hand and lies that he has put down a 3 <img
                 src="https://latex.codecogs.com/png.latex?([%5Ctextexclamdown C(3U)])"/>. Since both Alice and
             Bob each has a 3 in their hand, neither can call a bluff as there is a possible world where Charlie can have
-            a 3 in his hand. However, this is a manipulative update and both infer now that the other doesn't have a 3
+            a 3 in his hand. For Alice, her knowledge is
+            <img src="https://latex.codecogs.com/png.latex?[%5Ctextexclamdown C(3U)]C(1H \lor 2U \lor 3S)"/>.
+            For Bob, his knowledge is
+            <img src="https://latex.codecogs.com/png.latex?[%5Ctextexclamdown C(3U)]C(1U \lor 2H \lor 3H)"/>.
+            However, this is a manipulative update and both infer now that the other doesn't have a 3
             in their hand.
         </div>
 
@@ -101,8 +112,8 @@
             <p>It is Charlie's turn to place the elusive Ace. Since he lied before and is still in play, he has his
                 remaining card which is an Ace and he chooses to truthfully announce he has placed an Ace <img
                         src="https://latex.codecogs.com/png.latex?([%21C(1U)])"/>. As neither of the other player's have
-                an Ace in their hand,
-                they accept the move and do not doubt.</p>
+                an Ace in their hand, they accept the move and do not doubt.
+            </p>
 
             <p>This can be seen in the final state of the graph where the relation from real world to other worlds for
                 Alice and Bob displays Charlie having an Ace in his hand.</p>
