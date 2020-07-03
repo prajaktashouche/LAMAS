@@ -46,8 +46,8 @@ class Data:
     @staticmethod
     def read_files(in_files, in_nodes, in_edges):
 
-        ni = 1
-        ei = 1
+        ni = 0
+        ei = 0
 
         for file in in_files:
             reader = open(file, 'r')

@@ -1,0 +1,113 @@
+---
+layout: default
+---
+
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/results.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/cards.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/cards_changes.css">
+
+<h1>Results</h1>
+
+<div>
+    We ran a simulated play of 500 runs to compare the results. The strategy we went with is to use random choice of either passing the turn or placing a random card from own hand if the player does not have the expected card in their hand. Otherwise the player will always truthfully place the card if they have it in their hand. The runs were done on two different types of deals as given below. 
+</div>
+
+<h2>Deal - 1</h2>
+
+<div id="deal-1">
+    <p>
+        For deal one we have the below:        
+    </p>
+    <div class="playingCards fourColours simpleCards rotateHand">
+        {% include deals/deal1_h.html %}
+    </div >
+
+    <p>
+        The results of running the simulation for 500 runs is given in the below table. We can see Alice has a high chance of winning with this deal as she has 361 wins from the different strategies that was played on each turn. From the wins, she was able to get away with lying 36% of the time. While she has a higher winning rate by playing an honest game.         
+    </p>
+    <p>
+        Bob and Charlie also has a chance at winning if they employ the strategy of lying as all the games they won, they were able to get away with bluffing.
+    </p>
+    <div class="divTable stat">
+        <div class="divTableHeading">
+            <div class="divTableRow">
+                <div class="divTableHead"></div>
+                <div class="divTableHead">Won</div>
+                <div class="divTableHead">Bluff Called</div>
+                <div class="divTableHead">Get Away with Bluff</div>
+                <div class="divTableHead">A Honest Game</div>
+            </div>
+        </div>
+
+        <div class="divTableBody">
+            {% for item in site.data.stat1 %}
+            <div class="divTableRow">
+                <div class="divTableCell">{{ item.player }}</div>
+                <div class="divTableCell">{{ item.won }}</div>
+                <div class="divTableCell">{{ item.lost }}</div>
+                <div class="divTableCell">{{ item.bluffed }}</div>
+                <div class="divTableCell">{{ item.honest }}</div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+<h2>Deal - 2</h2>
+
+<div id="deal-2">
+    <p>
+        For deal two we have the below:        
+    </p>
+    <div class="playingCards fourColours simpleCards rotateHand">
+        {% include deals/deal2_h.html %}
+    </div >
+
+    <p>
+        The results of running the simulation for 500 runs is given in the below table. In this case we can see that Alice was not able to win any games as the strategy she used was to bluff and each time the bluff was called out in different iterations of the play. While Bob is able to win 243 rounds of the game by employing the path of honesty. Charlie was not able to use any of the strategy to win the game.
+    </p>
+
+    <div class="divTable stat">
+        <div class="divTableHeading">
+            <div class="divTableRow">
+                <div class="divTableHead"></div>
+                <div class="divTableHead">Won</div>
+                <div class="divTableHead">Bluff Called</div>
+                <div class="divTableHead">Get Away with Bluff</div>
+                <div class="divTableHead">A Honest Game</div>
+            </div>
+        </div>
+
+        <div class="divTableBody">
+            {% for item in site.data.stat2 %}
+            <div class="divTableRow">
+                <div class="divTableCell">{{ item.player }}</div>
+                <div class="divTableCell">{{ item.won }}</div>
+                <div class="divTableCell">{{ item.lost }}</div>
+                <div class="divTableCell">{{ item.bluffed }}</div>
+                <div class="divTableCell">{{ item.honest }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<h1>Discussion</h1>
+
+<p>We were able to see that in certain situations it is beneficial to the player to lie to win the game but it depends on the deal. For example: Alice has a higher chance of winning for deal-1 while 100% of loosing in deal-2. It does not matter if she employs the strategy of lying or honesty in the latter case. </p>
+
+<p>We have also seen that passing a turn can update the possible worlds to a situation where such a model cannot exist in reality. This can happen in manipulative updates as the player believe dishonest statement to be true and thus have a contradiction of the possible worlds with the real world.</p>
+
+<p>We were also able to notice that bluffs are not called by the other players when the player has announced a statement truthfully as no bluff is called unless the model is completely valid and it is always the case that after a truthful announcement the model is valid.</p>
+
+<h1>Future Work</h1>
+
+<ul>
+<li>Increase the number of cards dealt to the players. This will increase the complexity and hence also the winning rate from a strategy of lying.</li>
+
+<li>Increase the number of cards that can be placed at a turn. Even if the number of cards in hand are increased, we can always get the same results if the players are only placing one card at each turn. So increasing the number of cards to place will also provide more opportunities to get away with bluffing </li>
+
+<li>Increase the number of players</li>
+</ul>
+

@@ -41,6 +41,9 @@ class Player:
         ret_obj = [card.card for card in self.hand]
         return "({},{})".format(*ret_obj)
 
+    def get_hand_values(self):
+        return [card.val for card in self.hand]
+
     def get_color(self):
         return self.colors[self.player_id]
 
@@ -104,4 +107,9 @@ class Player:
     def lose_hand(self):
         self.hand.clear()
 
+    def is_empty(self):
+        if len(self.hand) == 0:
+            return True
+        else:
+            return False
 

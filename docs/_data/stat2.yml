@@ -1,0 +1,20 @@
+- player: Alice
+  won: 0
+  lost: 100%
+  bluffed: 0
+  honest: 0
+
+- player: Bob
+  won: 243
+  lost: 0
+  bluffed: 0
+  honest: 100%
+
+- player: Charlie
+  won: 0
+  lost: 0
+  bluffed: 0
+  honest: 0
+  
+  
+  

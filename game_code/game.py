@@ -57,6 +57,8 @@ class Game:
         elif action == "PASS":
             pass    # do nothing
 
+        return call_bluff
+
     def show_player_hands(self):
         for p in self.players:
             p.show_hand()

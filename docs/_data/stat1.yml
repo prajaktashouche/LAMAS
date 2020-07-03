@@ -1,0 +1,20 @@
+- player: Alice
+  won: 361
+  lost: 0
+  bluffed: 36.57%
+  honest: 63.43%
+
+- player: Bob
+  won: 92
+  lost: 0
+  bluffed: 100%
+  honest: 0
+
+- player: Charlie
+  won: 47
+  lost: 0
+  bluffed: 100%
+  honest: 0
+  
+  
+  

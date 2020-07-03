@@ -1,7 +1,10 @@
 from game import Game
 
 
-def play1(game):
+def play1():
+    game = Game(1)
+    game.show_world("p1_turn0")
+
     # Alice truthfully places 1
     print("---PLAYER ACTION---")
     game.player_announcement(0, '1', 'PLACE', True)
@@ -41,7 +44,10 @@ def play1(game):
     print("CHARLIE WINS")
 
 
-def play2(game):
+def play2():
+    game = Game(1)
+    game.show_world("p2_turn0")
+
     # Alice truthfully places 1
     print("---PLAYER ACTION---")
     game.player_announcement(0, '1', 'PLACE', True)
@@ -69,7 +75,9 @@ def play2(game):
     print("ALICE WINS")
 
 
-def play3(game):
+def play3():
+    game = Game(2)
+    game.show_world("p3_turn0")
 
     # Alice truthfully places 1
     print("---PLAYER ACTION---")
@@ -97,17 +105,12 @@ def play3(game):
 
 
 def main():
-    print('Main')
-
-    # pass 1 for play1 and play2
-    # pass 2 for play3
-    game = Game(2)
-    game.show_world("main")
 
     # Player has to place cards in order of 1, 2, 3
-    # play1(game)
-    # play2(game)
-    play3(game)
+
+    # play1()
+    # play2()
+    play3()
 
 if __name__ == "__main__":
     main()
