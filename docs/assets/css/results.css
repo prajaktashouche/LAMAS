@@ -1,0 +1,91 @@
+.state-container {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    height: auto;
+}
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    height: auto;
+}
+.player-name {
+    text-align: center;
+    border-style: none;
+    color: white;
+    padding: 5px;
+}
+.image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: auto;
+    flex: 1;
+}
+.p1 {
+    background-color: darkred;
+}
+
+.p2 {
+    background-color: darkblue;
+}
+
+.p3 {
+    background-color: darkgreen;
+}
+
+div.stat {
+  border: 6px solid #5EB1BF;
+  background-color: #D8D6D8;
+  width: 100%;
+  text-align: center;
+}
+.divTable.stat .divTableCell, .divTable.stat .divTableHead {
+  border: 1px solid #5EB1BF;
+  padding: 4px 4px;
+}
+.divTable.stat .divTableBody .divTableCell {
+  font-size: 13px;
+}
+.divTable.stat .divTableHeading {
+  background: #5EB1BF;
+  background: -moz-linear-gradient(top, #86c4cf 0%, #6eb8c5 66%, #5EB1BF 100%);
+  background: -webkit-linear-gradient(top, #86c4cf 0%, #6eb8c5 66%, #5EB1BF 100%);
+  background: linear-gradient(to bottom, #86c4cf 0%, #6eb8c5 66%, #5EB1BF 100%);
+}
+.divTable.stat .divTableHeading .divTableHead {
+  font-size: 17px;
+  font-weight: bold;
+  color: #F0F0F0;
+  text-align: center;
+  border-left: 2px solid #5EB1BF;
+}
+.divTable.stat .divTableHeading .divTableHead:first-child {
+  border-left: none;
+}
+
+.stat .tableFootStyle {
+  font-size: 16px;
+  font-weight: bold;
+  color: #F0F0F0;
+  background: #5EB1BF;
+  background: -moz-linear-gradient(top, #86c4cf 0%, #6eb8c5 66%, #5EB1BF 100%);
+  background: -webkit-linear-gradient(top, #86c4cf 0%, #6eb8c5 66%, #5EB1BF 100%);
+  background: linear-gradient(to bottom, #86c4cf 0%, #6eb8c5 66%, #5EB1BF 100%);
+}
+.stat .tableFootStyle {
+  font-size: 16px;
+}
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
