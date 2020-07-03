@@ -17,7 +17,7 @@ The public announcement in our game follow deception and manipulating the other 
 Taking the notations defined by [Wang et al. (2011)](https://core.ac.uk/download/pdf/23799107.pdf), lying is denoted as ![lie](https://latex.codecogs.com/svg.latex?%5Ctextexclamdown%20%5Cphi) and truthful public announcement as ![true](https://latex.codecogs.com/svg.latex?%21%20%5Cphi). Together, the two are referenced as manipulative update ![manipulate](https://latex.codecogs.com/svg.latex?%5Cddagger%20%5Cphi).
 
 The axioms of manipulative update are the KD45 axioms system with the rules for belief ![belief](https://latex.codecogs.com/svg.latex?B_i). The axioms for lying are as follows:
-* ![axiom1](https://latex.codecogs.com/svg.latex?%5B%5Ctextexclamdown%20%5Cphi%5D%20%5Cpsi%20%5Cleftrightarrow%20%5Cneg%20%5Cphi%20%5Crightarrow%20%5Cpsi)
+* ![axiom1](https://latex.codecogs.com/svg.latex?%5B%21%60%5Cphi%5Dp%20%5Cleftrightarrow%20%5Cneg%20%5Cphi%20%5Crightarrow%20p)
 * ![axiom2](https://latex.codecogs.com/svg.latex?%5B%21%60%5Cphi%5D%20%5Cneg%20%5Cpsi%20%5Cleftrightarrow%20%5Cneg%20%5Cphi%20%5Crightarrow%20%5Cneg%20%5B%21%60%5Cphi%5D%20%5Cpsi)
 * ![axiom3](https://latex.codecogs.com/svg.latex?%5B%5Ctextexclamdown%5Cphi%5D%28%20%5Cpsi_1%20%5Cwedge%20%5Cpsi_2%29%20%5Cleftrightarrow%20%5B%5Ctextexclamdown%5Cphi%5D%5Cpsi_1%20%5Cwedge%20%5B%5Ctextexclamdown%5Cphi%5D%5Cpsi_2)
 * ![axiom4](https://latex.codecogs.com/svg.latex?%5B%5Ctextexclamdown%20%5Cphi%5D%20B_i%20%5Cpsi%20%5Cleftrightarrow%20%5Cneg%20%5Cphi%20%5Crightarrow%20B_i%20%5B%21%20%5Cphi%5D%20%5Cpsi)

@@ -1,4 +1,12 @@
 - play: p2
+  turn: 0
+  player: "-"
+  card: "-"
+  announcement: "-"
+  statement: "-"
+  placed: "-"
+
+- play: p2
   turn: 1
   player: Alice
   card: 1

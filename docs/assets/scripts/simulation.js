@@ -31,6 +31,17 @@ function openPlay(evt, playName) {
   }
 
   drawMain();
+
+  // Hackish, to start from state 0 automatically
+  if (['play1'].includes(playName)){
+    nextAction('p1');
+  }
+  else if (['play2'].includes(playName)){
+    nextAction('p2');
+  }
+  else if (['play3'].includes(playName)){
+    nextAction('p3');
+  }
 }
 
 // This method is responsible for drawing the graph, returns the drawn network
@@ -58,7 +69,7 @@ function drawMain(){
   displayState('');
   displayAction('');
   drawGraph(main_nodes, main_edges);
-  stageCounter = 0;
+  stageCounter = -1;
 }
 
 function displayText(playNum) {
@@ -69,7 +80,7 @@ function displayText(playNum) {
     div_class[i].style.display = "none";
   }
 
-  if (playNum != '') {
+  if (playNum !== '') {
     document.getElementById(playNum + "-turn-" + stageCounter).style.display = "block";
   }
 }
@@ -82,7 +93,7 @@ function displayState(playNum) {
     div_class[i].style.display = "none";
   }
 
-  if (playNum != '') {
+  if (playNum !== '') {
     document.getElementById(playNum + "-state-" + stageCounter).style.display = "block";
   }
 }
@@ -95,7 +106,7 @@ function displayAction(playNum) {
     div_class[i].style.display = "none";
   }
 
-  if (playNum != '') {
+  if (playNum !== '') {
     document.getElementById(playNum + "-action-" + stageCounter).style.display = "block";
   }
 }
@@ -104,7 +115,7 @@ function nextAction(playNum) {
   
   stageCounter += 1;
 
-  if (playNum == 'p1') {
+  if (playNum === 'p1') {
 
     if (stageCounter > Object.keys(play1_nodes_dict).length){
       drawMain();
@@ -119,7 +130,7 @@ function nextAction(playNum) {
  
     drawGraph(nodes, edges);        
   }
-  else if (playNum == 'p2') {
+  else if (playNum === 'p2') {
     if (stageCounter > Object.keys(play2_nodes_dict).length) {
       drawMain();
       return
@@ -133,7 +144,7 @@ function nextAction(playNum) {
 
     drawGraph(nodes, edges);
   }
-  else if (playNum == 'p3') {
+  else if (playNum === 'p3') {
     if (stageCounter > Object.keys(play3_nodes_dict).length) {
       drawMain();
       return
@@ -153,9 +164,9 @@ function prevAction(playNum) {
 
   stageCounter -= 1;
 
-  if (playNum == 'p1') {
+  if (playNum === 'p1') {
 
-    if (stageCounter < 1) {
+    if (stageCounter < 0) {
       drawMain();
       return
     }    
@@ -168,8 +179,8 @@ function prevAction(playNum) {
 
     drawGraph(nodes, edges);    
   }
-  else if (playNum == 'p2') {
-    if (stageCounter < 1) {
+  else if (playNum === 'p2') {
+    if (stageCounter < 0) {
       drawMain();
       return
     }
@@ -182,8 +193,8 @@ function prevAction(playNum) {
 
     drawGraph(nodes, edges);
   }
-  else if (playNum == 'p3') {
-    if (stageCounter < 1) {
+  else if (playNum === 'p3') {
+    if (stageCounter < 0) {
       drawMain();
       return
     }
