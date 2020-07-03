@@ -56,14 +56,13 @@ class Strategy:
                 card_at_turn_idx += 1
                 if card_at_turn_idx > 2:
                     card_at_turn_idx = 0
+            card_to_place = self.cards_at_turn[card_at_turn_idx]
 
             for p in players:
                 if p.is_empty():
                     ret_player = p.player_id
                     in_play = False
                     break
-
-            card_to_place = self.cards_at_turn[card_at_turn_idx]
 
         return ret_player, turns
 
